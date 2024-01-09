@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4h0mdk1hiwc6"]
+
+[ext_resource type="Texture2D" uid="uid://2omdrnwi2unr" path="res://Assets/Icons/Interact1.png" id="1_qg5rb"]
+[ext_resource type="Script" path="res://Dialog/Notifier.gd" id="1_qjkex"]
+[ext_resource type="Texture2D" uid="uid://cj0tg80wo2yj8" path="res://Assets/Icons/Interact2.png" id="2_nif3y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjr1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qg5rb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nif3y")
+}],
+"loop": true,
+"name": &"interact",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"null",
+"speed": 5.0
+}]
+
+[node name="Notifier" type="Node2D"]
+script = ExtResource("1_qjkex")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kjr1m")
+animation = &"interact"
+frame_progress = 0.894183

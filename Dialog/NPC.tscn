@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds61jvf2crebk"]
+
+[ext_resource type="Script" path="res://Dialog/NPC.gd" id="1_tflkv"]
+[ext_resource type="PackedScene" uid="uid://bixi67x2r0wwx" path="res://Dialog/Dialog.tscn" id="2_ubmoc"]
+[ext_resource type="PackedScene" uid="uid://b4h0mdk1hiwc6" path="res://Dialog/Notifier.tscn" id="3_804v3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7wrt"]
+size = Vector2(112, 232)
+
+[node name="NPC" type="StaticBody2D"]
+script = ExtResource("1_tflkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -116)
+shape = SubResource("RectangleShape2D_s7wrt")
+
+[node name="DialogBubble" parent="." instance=ExtResource("2_ubmoc")]
+position = Vector2(0, -304)
+
+[node name="Notifier" parent="." instance=ExtResource("3_804v3")]
+position = Vector2(0, -304)

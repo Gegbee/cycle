@@ -1,0 +1,31 @@
+> cf-1 > T 
+	| init
+	cf |-| Oh great...
+	cf |-| ...another one.
+	player |-| glob.
+	cf |-| Watch out for the rats. 
+	cf |-| They are ferral creatures.
+	cf |-| Couldn't get the unicycle of my legs...
+	cf |-| So they took them with it.
+	player |-| ...
+
+> cf-2 > T
+	| init
+	cf |-| You want to know more about this place?
+	player |-| glob.
+	cf |-| I personally can't tell you much...
+	cf |-| ...but the rats-
+	cf |-| There were whispering about the top.
+	cf |-| Something called...
+	cf |-| "Reality"
+	cf |-| A world where we don't exist.
+	player |-| glob glob.
+	player |-| :(
+	cf |-| Say...
+	cf |-| You do me a favor?
+	cf |-| glob.
+	cf |-| If you get up there,
+	cf |-| And you see "Reality,"
+	cf |-| Think about me.
+	cf |-| Imagine I'm up there with you.
+	cf |-| Whether it's hell or heaven.

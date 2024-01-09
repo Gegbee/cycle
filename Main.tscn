@@ -1,24 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://n113x6kgy4xd"]
+[gd_scene load_steps=6 format=3 uid="uid://n113x6kgy4xd"]
 
-[ext_resource type="Texture2D" uid="uid://bo6k8gni0bb7x" path="res://Player/TestSprite.png" id="1_2ctbg"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_lgobn"]
-[ext_resource type="Script" path="res://Player/Wheel.gd" id="3_327el"]
+[ext_resource type="Script" path="res://Main.gd" id="1_rj8hx"]
+[ext_resource type="PackedScene" uid="uid://ctmb84aff7y1u" path="res://Player/Player.tscn" id="2_4d4nc"]
+[ext_resource type="PackedScene" uid="uid://cn3fsr0vvmku0" path="res://Dialog/CfNPC.tscn" id="4_37wy4"]
 [ext_resource type="Texture2D" uid="uid://bd3hdfgmrc7u7" path="res://Assets/TestMap.png" id="4_qktpp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1543q"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2d77"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0wkj8"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hee8h"]
-size = Vector2(16, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsg0e"]
-size = Vector2(80, 140)
-
 [node name="Main" type="Node2D"]
+script = ExtResource("1_rj8hx")
 
 [node name="Col" type="StaticBody2D" parent="."]
 
@@ -37,46 +27,12 @@ scale = Vector2(10, 10)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-598.4, 146.4, 596, 152, 592, 0, -600, 0)
 
-[node name="Player" type="Node2D" parent="."]
-script = ExtResource("1_lgobn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(-8, -136)
-texture = ExtResource("1_2ctbg")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="Player"]
-physics_material_override = SubResource("PhysicsMaterial_d2d77")
-continuous_cd = 2
-max_contacts_reported = 4
-contact_monitor = true
-can_sleep = false
-script = ExtResource("3_327el")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/RigidBody2D"]
-position = Vector2(0, -40)
-shape = SubResource("CircleShape2D_0wkj8")
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="Player"]
-continuous_cd = 2
-max_contacts_reported = 4
-contact_monitor = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/RigidBody2D2"]
-position = Vector2(0, -88)
-shape = SubResource("RectangleShape2D_hee8h")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/RigidBody2D2"]
-position = Vector2(0, -194)
-shape = SubResource("RectangleShape2D_nsg0e")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Player"]
-position = Vector2(0, -40)
-node_a = NodePath("../RigidBody2D")
-node_b = NodePath("../RigidBody2D2")
+[node name="Player" parent="." instance=ExtResource("2_4d4nc")]
 
 [node name="TestMap" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(128, -472)
 texture = ExtResource("4_qktpp")
 
-[connection signal="body_entered" from="Player/RigidBody2D" to="Player/RigidBody2D" method="_on_body_entered"]
+[node name="CfNPC" parent="." instance=ExtResource("4_37wy4")]
+position = Vector2(472, 0)
