@@ -28,6 +28,8 @@ var mouse_vel : Vector2 = Vector2()
 var target_player_rot : float = 0.0
 var body_rot_pid = PID.new(7000.0, 0.0, 0.0, 0.0)
 var wheel_vel_to_lean_ratio : float = 80
+
+var keys : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -45,7 +47,8 @@ func _process(delta):
 		autobalance(delta)
 		return
 	
-	#var horz1 = Input.get_action_strength("right") - Input.get_action_strength("left")
+	var horz1 = Input.get_action_strength("right") - Input.get_action_strength("left")
+	mouse_vel.x = horz1 * 20
 	#if wheel.is_on_floor:
 	#	body.apply_impulse(Vector2(-horz1 * delta * LEAN_POWER, 0), Vector2(0, -250))
 	#else:
@@ -97,7 +100,7 @@ func set_state(_state : int):
 		pass
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !keys:
 		mouse_vel = event.relative
 		if abs(mouse_vel.x) < 1:
 			mouse_vel.x = 0
