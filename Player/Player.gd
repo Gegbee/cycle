@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var dialog_entity = DialogEntity.new($DialogBubble/RichTextLabel, $DialogBubble/Choices, $DialogBubble)
+@onready var dialog_entity = DialogEntity.new($NoRotation/DialogBubble/RichTextLabel, $NoRotation/DialogBubble/Choices, $NoRotation/DialogBubble)
 
 @onready var body = $Body
 @onready var wheel = $Wheel
@@ -36,7 +36,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	$NoRotation.global_position = $Wheel.global_position
 	if state != ACTIVE:
 		autobalance(delta)
 		return
@@ -49,13 +49,15 @@ func _process(delta):
 	#var horz2 = Input.get_action_strength("right2") - Input.get_action_strength("left2")
 	#wheel.apply_torque_impulse(horz2 * 50000 * delta)
 	if abs(body.rotation) < PI/3 and wheel.is_on_floor:
-		wheel.apply_torque_impulse(body.rotation * 600000 * delta)
+		wheel.apply_torque_impulse(body.rotation * 550000 * delta)
 	#else:
 		#wheel.apply_torque_impulse(wheel_pid.step(-wheel.rotation, delta) * delta)
 	if wheel.is_on_floor:
 		#body.apply_force(Vector2(body_pid.step(target_player_rot-body.rotation, delta) * delta, 0), Vector2(0, -250))
 		body.apply_impulse(Vector2(mouse_vel.x * 100 * delta, 0), Vector2(0, -250))
-	if (Input.is_action_just_released("jump")) and jump_mult > 0 and jump_cooldown <= 0.0:
+	else:
+		body.apply_impulse(Vector2(mouse_vel.x * 20 * delta, 0), Vector2(0, -250))
+	if (Input.is_action_just_released("jump")) and jump_mult > 0 and jump_cooldown <= 0.0 and wheel.is_on_floor:
 			jump_cooldown = 0.2
 			#linear_velocity.y = 0
 			#linear_velocity.y -= INIT_JUMP_SPEED * (jump_mult*3/4 + 0.25)
@@ -75,7 +77,7 @@ func _process(delta):
 
 func autobalance(delta):
 	body.apply_force(Vector2(body_pid.step(-body.rotation, delta) * delta, 0), Vector2(0, -250))
-	wheel.apply_torque_impulse(wheel_pid.step(init_wheel_rot - wheel.rotation, delta) * delta)
+	wheel.apply_torque_impulse(wheel_pid.step(init_wheel_rot - wheel.rotation, delta) * delta * 50)
 	
 func set_state(_state : int):
 	if _state == ACTIVE:
@@ -92,6 +94,7 @@ func set_state(_state : int):
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_vel = event.relative
+		print(mouse_vel)
 		target_player_rot += mouse_vel.x * 0.01
 		#mouse_vel.x = clamp(mouse_vel.x, -1, 1)
 	if Input.is_action_just_pressed('interact'):

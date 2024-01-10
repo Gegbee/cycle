@@ -8,22 +8,24 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2d77"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0lesl"]
-radius = 224.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wkj8"]
 radius = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hee8h"]
 size = Vector2(16, 96)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsg0e"]
-size = Vector2(64, 140)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_olxwo"]
+radius = 32.0
+height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngbvd"]
+size = Vector2(592, 224)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_ae5wc")
 
 [node name="Wheel" type="RigidBody2D" parent="."]
+position = Vector2(0, -40)
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_d2d77")
 continuous_cd = 2
@@ -32,30 +34,22 @@ contact_monitor = true
 can_sleep = false
 script = ExtResource("3_yssa1")
 
-[node name="Area2D" type="Area2D" parent="Wheel"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/Area2D"]
-position = Vector2(0, -40)
-shape = SubResource("CircleShape2D_0lesl")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel"]
-position = Vector2(0, -40)
 shape = SubResource("CircleShape2D_0wkj8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Wheel"]
-position = Vector2(0, -40)
 texture = ExtResource("3_cd37b")
 
 [node name="Body" type="RigidBody2D" parent="."]
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 10)
-gravity_scale = 0.2
+gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 4
 contact_monitor = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
-position = Vector2(-8, -136)
+position = Vector2(-8, -160)
 texture = ExtResource("6_g13yf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
@@ -63,22 +57,32 @@ position = Vector2(0, -88)
 shape = SubResource("RectangleShape2D_hee8h")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Body"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_nsg0e")
+position = Vector2(0, -200)
+shape = SubResource("CapsuleShape2D_olxwo")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 position = Vector2(0, -40)
 node_a = NodePath("../Wheel")
 node_b = NodePath("../Body")
 
-[node name="DialogBubble" parent="." instance=ExtResource("4_tw7ot")]
-position = Vector2(0, -360)
+[node name="NoRotation" type="Node2D" parent="."]
 
-[node name="Body2" type="Sprite2D" parent="."]
+[node name="Area2D" type="Area2D" parent="NoRotation"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoRotation/Area2D"]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_ngbvd")
+
+[node name="DialogBubble" parent="NoRotation" instance=ExtResource("4_tw7ot")]
+position = Vector2(0, -304)
+
+[node name="Body2" type="Sprite2D" parent="NoRotation"]
 visible = false
 position = Vector2(-8, -160)
 texture = ExtResource("6_g13yf")
 
 [connection signal="body_entered" from="Wheel" to="Wheel" method="_on_body_entered"]
-[connection signal="body_entered" from="Wheel/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Wheel/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="NoRotation/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="NoRotation/Area2D" to="." method="_on_area_2d_body_exited"]

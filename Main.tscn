@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://n113x6kgy4xd"]
+[gd_scene load_steps=7 format=3 uid="uid://n113x6kgy4xd"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_rj8hx"]
 [ext_resource type="PackedScene" uid="uid://ctmb84aff7y1u" path="res://Player/Player.tscn" id="2_4d4nc"]
 [ext_resource type="PackedScene" uid="uid://cn3fsr0vvmku0" path="res://Dialog/CfNPC.tscn" id="4_37wy4"]
 [ext_resource type="Texture2D" uid="uid://bd3hdfgmrc7u7" path="res://Assets/TestMap.png" id="4_qktpp"]
+[ext_resource type="Texture2D" uid="uid://bp522yvyng1hf" path="res://Assets/Levels/Level1.png" id="5_tkvxj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1543q"]
 
@@ -16,34 +17,72 @@ script = ExtResource("1_rj8hx")
 shape = SubResource("WorldBoundaryShape2D_1543q")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(2272, -5.59998)
 polygon = PackedVector2Array(-72, 0, -112, -136, -232, -184, -232, -216, -248, -232, -528, -232, -536, -272, -504, -312, -648, -384, -680, -736, -872, -736, -872, 0)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Col"]
 
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(1254, -1390, 1260, 16, 1374, 20, 1384, -1400)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-1248, -1387, -1248, 16, -1391, 13, -1385, -1403)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(1117, -1186, 1124, -1166, 1252, -1224, 1253, -1264)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(932, -941, 934, -909, 1253, -907, 1255, -941)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(562, -879, 564, -844, 745, -844, 743, -881)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(111, -817, 108, -779, 355, -755, 358, -790)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-879, -731, -871, -692, -349, -808, -359, -844)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-1257, -492, -1042, -463, -1038, -503, -1264, -531)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(844, -2, 844, -278, 1253, -431, 1262, 1)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-1016, 0, -1016, -138, -941, -139, -912, -298, -771, -296, -770, -139, -607, -139, -570, 1)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(2272, -5.59998)
+polygon = PackedVector2Array(320, 0, 584, -24, 896, -104, 1272, -264, 1272, 0)
+
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(2272, -5.59998)
 polygon = PackedVector2Array(-8, -888, 176, -888, 192, -896, 264, -888, 360, -856, 416, -888, 232, -984, 272, -1032, -40, -1104)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(2272, -5.59998)
 polygon = PackedVector2Array(456, -536, 560, -584, 568, -624, 688, -712, 704, -632, 640, -544, 640, -504, 656, -488, 656, -416, 560, -368, 504, -392)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(2272, -5.59998)
 polygon = PackedVector2Array(-344, -536, -336, -520, 32, -640, 64, -640, 64, -584, 104, -584, 104, -640, 224, -640, 224, -656, 32, -656)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -624)
 zoom = Vector2(0.715, 0.715)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(10, 10)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-598.4, 146.4, 596, 152, 592, 0, -600, 0)
-
 [node name="Player" parent="." instance=ExtResource("2_4d4nc")]
 
 [node name="TestMap" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(128, -472)
+position = Vector2(2400, -477.6)
 texture = ExtResource("4_qktpp")
 
 [node name="CfNPC" parent="." instance=ExtResource("4_37wy4")]
 position = Vector2(472, 0)
+
+[node name="Level1" type="Sprite2D" parent="."]
+z_index = -11
+position = Vector2(0, -635)
+texture = ExtResource("5_tkvxj")
