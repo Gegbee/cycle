@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ds61jvf2crebk" path="res://Dialog/NPC.tscn" id="1_rnv4x"]
 
 [node name="CfNPC" instance=ExtResource("1_rnv4x")]
+
+[node name="Notifier" parent="." index="2"]
+z_index = 12

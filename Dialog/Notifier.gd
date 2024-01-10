@@ -3,23 +3,14 @@ extends Node2D
 var tween: Tween
 var notifying : bool = false
 @onready var anima = $AnimatedSprite2D
-var init_parent = null
-var init_pos : Vector2 = Vector2()
 var transition_to : String = ""
 var previous_trans_speed : float = 0.0
 var current_noti : String = "null"
+
 func _ready():
 	show()
 	anima.scale = Vector2(0, 0)
 	anima.animation = "null"
-	init_parent = get_parent()
-	init_pos = position
-	top_level = true
-	
-	
-func _process(delta):
-	if top_level:
-		global_position = init_parent.global_position + init_pos
 	
 func noti(noti_name, speed = 0.0):
 	if noti_name == current_noti:
@@ -31,9 +22,9 @@ func noti(noti_name, speed = 0.0):
 				tween.kill()
 			tween = create_tween()
 			if is_instance_valid(tween):
+				transition_to = ""
 				tween.connect("finished",Callable(self,"tween_finished"))
 				tween.tween_property(anima, "scale", Vector2(0, 0), speed).from_current()
-				transition_to = ""
 		else:
 			anima.scale = Vector2(0, 0)
 		return
@@ -44,9 +35,9 @@ func noti(noti_name, speed = 0.0):
 				tween.kill()
 			tween = create_tween()
 			if is_instance_valid(tween):
+				transition_to = ""
 				tween.connect("finished",Callable(self,"tween_finished"))
 				tween.tween_property(anima, "scale", Vector2(1, 1), speed).from_current()
-				transition_to = ""
 		else:
 			anima.scale = Vector2(1, 1)
 	else:
@@ -55,10 +46,10 @@ func noti(noti_name, speed = 0.0):
 				tween.kill()
 			tween = create_tween()
 			if is_instance_valid(tween):
-				tween.tween_property(anima, "scale", Vector2(0, 0), speed).from_current()
-				tween.connect("finished",Callable(self,"tween_finished"))
 				transition_to = noti_name
 				previous_trans_speed = speed
+				tween.connect("finished",Callable(self,"tween_finished"))
+				tween.tween_property(anima, "scale", Vector2(0, 0), speed).from_current()
 		else:
 			anima.scale = Vector2(1, 1)
 			anima.play(noti_name)
@@ -67,7 +58,7 @@ func is_notifying():
 	return false if anima.scale.length() == 0 else true
 
 func tween_finished():
-	if anima.scale.length() == 0:
+	if !is_notifying():
 		if transition_to == "":
 			anima.play("null")
 		else:

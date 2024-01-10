@@ -39,6 +39,7 @@ const STEP_SPEED = 1.0/60.0
 var step_per_letters : int = 2
 
 var tween : Tween
+var init_b_pos : Vector2 = Vector2()
 
 func _ready():
 	#bubble = get_node(dialog_path)
@@ -59,6 +60,7 @@ func _ready():
 	t.text = ""
 	#call_deferred("set_accessibility")
 	bubble.hide()
+	init_b_pos = bubble.position
 
 func _init(text_c, choice_c, dialog_n):
 	t = text_c
@@ -183,7 +185,7 @@ func roll_text(new_text : String):
 	step_timer.start(STEP_SPEED)
 	bubble.show()
 	bubble.scale = Vector2(0.6, 0.6)
-	bubble.position = Vector2(480, 270)
+	bubble.position = init_b_pos
 	tween = create_tween()
 	if is_instance_valid(tween):
 		#tween.connect("finished",Callable(self,"tween_finished"))

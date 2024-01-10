@@ -18,9 +18,20 @@ shape = SubResource("WorldBoundaryShape2D_1543q")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(-72, 0, -112, -136, -232, -184, -232, -216, -248, -232, -528, -232, -536, -272, -504, -312, -648, -384, -680, -736, -872, -736, -872, 0)
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Col"]
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-8, -888, 176, -888, 192, -896, 264, -888, 360, -856, 416, -888, 232, -984, 272, -1032, -40, -1104)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(456, -536, 560, -584, 568, -624, 688, -712, 704, -632, 640, -544, 640, -504, 656, -488, 656, -416, 560, -368, 504, -392)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-344, -536, -336, -520, 32, -640, 64, -640, 64, -584, 104, -584, 104, -640, 224, -640, 224, -656, 32, -656)
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -264)
-zoom = Vector2(0.5, 0.5)
+position = Vector2(0, -624)
+zoom = Vector2(0.715, 0.715)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2(10, 10)

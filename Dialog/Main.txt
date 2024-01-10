@@ -5,8 +5,9 @@
 	player |-| glob.
 	cf |-| Watch out for the rats. 
 	cf |-| They are ferral creatures.
-	cf |-| Couldn't get the unicycle of my legs...
+	cf |-| Couldn't get the unicycle off my legs...
 	cf |-| So they took them with it.
+	cf |-| Sliced both of them right off.
 	player |-| ...
 
 > cf-2 > T
@@ -16,14 +17,13 @@
 	cf |-| I personally can't tell you much...
 	cf |-| ...but the rats-
 	cf |-| There were whispering about the top.
-	cf |-| Something called...
-	cf |-| "Reality"
+	cf |-| Something called "Reality"
 	cf |-| A world where we don't exist.
 	player |-| glob glob.
 	player |-| :(
 	cf |-| Say...
 	cf |-| You do me a favor?
-	cf |-| glob.
+	player |-| glob.
 	cf |-| If you get up there,
 	cf |-| And you see "Reality,"
 	cf |-| Think about me.

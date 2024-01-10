@@ -88,6 +88,7 @@ func parse_line_by_char(line : String, char : String):
 	return la
 	
 func init_dialog(dialog_path : String, is_export : bool):
+	Global.dialog = self
 	if is_export:
 		var export_glob_path = dialog_path.split(".")[0] + "_export.json"
 		var f = FileAccess.open(export_glob_path, FileAccess.READ)
@@ -97,9 +98,6 @@ func init_dialog(dialog_path : String, is_export : bool):
 	else:
 		parse_glob(dialog_path)
 	speakers["player"] = $Player.dialog_entity
-	
-func _ready():
-	Global.dialog = self
 	
 func assign_speaker(_name : String, _object):
 	speakers[name] = _object.dialog_entity

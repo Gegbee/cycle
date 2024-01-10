@@ -22,7 +22,6 @@ func activate_base_convo():
 	if is_instance_valid(Global.dialog):
 		past_convos.append(new_pot_convo)
 		base_convos[current_convo_set].erase(new_pot_convo)
-		print("TRUEE!!")
 		Global.dialog.start_convo(new_pot_convo)
 		times_talked_to += 1
 		Global.player.disable_notis(true)
