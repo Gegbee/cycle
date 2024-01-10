@@ -23,9 +23,11 @@ var npcs_in_range : Array = []
 var body_pid = PID.new(70000.0, 0.0, 10000.0, 0.0)
 var init_wheel_rot := 0.0
 var wheel_pid = PID.new(70000.0, 0.0, 2000.0, 0.0)
-var wheelt_pid = PID.new(70.0, 0.0, 2.0, 0.0)
+var wheelt_pid = PID.new(7000.0, 0.0, 100.0, 0.0)
 var mouse_vel : Vector2 = Vector2()
 var target_player_rot : float = 0.0
+var body_rot_pid = PID.new(7000.0, 0.0, 0.0, 0.0)
+var wheel_vel_to_lean_ratio : float = 80
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -37,6 +39,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$NoRotation.global_position = $Wheel.global_position
+	$Body/Sprite2D.position.y = -144 + jump_mult * 10
+	$Body/Sprite2D.scale.y = 1.0 - 0.1*jump_mult
 	if state != ACTIVE:
 		autobalance(delta)
 		return
@@ -49,7 +53,8 @@ func _process(delta):
 	#var horz2 = Input.get_action_strength("right2") - Input.get_action_strength("left2")
 	#wheel.apply_torque_impulse(horz2 * 50000 * delta)
 	if abs(body.rotation) < PI/3 and wheel.is_on_floor:
-		wheel.apply_torque_impulse(body.rotation * 550000 * delta)
+		wheel.apply_torque_impulse(-wheelt_pid.step(wheel.angular_velocity - wheel_vel_to_lean_ratio * fmod(body.rotation, 2 * PI)/(PI/3), delta) * delta)
+		#print(wheel.angular_velocity, ", ", fmod(body.rotation, 2 * PI)/(PI/3))
 	#else:
 		#wheel.apply_torque_impulse(wheel_pid.step(-wheel.rotation, delta) * delta)
 	if wheel.is_on_floor:
@@ -61,7 +66,7 @@ func _process(delta):
 			jump_cooldown = 0.2
 			#linear_velocity.y = 0
 			#linear_velocity.y -= INIT_JUMP_SPEED * (jump_mult*3/4 + 0.25)
-			body.apply_central_impulse(Vector2.UP.rotated(body.rotation) * INIT_JUMP_SPEED * (jump_mult*3/4 + 0.25))
+			body.apply_central_impulse(Vector2.UP.rotated(fmod(body.rotation, 2 * PI)) * INIT_JUMP_SPEED * (jump_mult*3/4 + 0.25))
 	if jump_cooldown > 0.0:
 		jump_cooldown -= delta
 	if wheel.is_on_floor:
@@ -76,7 +81,7 @@ func _process(delta):
 			jump_mult = 0
 
 func autobalance(delta):
-	body.apply_force(Vector2(body_pid.step(-body.rotation, delta) * delta, 0), Vector2(0, -250))
+	body.apply_force(Vector2(body_pid.step(-fmod(body.rotation, 2 * PI), delta) * delta, 0), Vector2(0, -250))
 	wheel.apply_torque_impulse(wheel_pid.step(init_wheel_rot - wheel.rotation, delta) * delta * 50)
 	
 func set_state(_state : int):
@@ -94,8 +99,9 @@ func set_state(_state : int):
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_vel = event.relative
-		print(mouse_vel)
-		target_player_rot += mouse_vel.x * 0.01
+		if abs(mouse_vel.x) < 1:
+			mouse_vel.x = 0
+		target_player_rot = clamp(mouse_vel.x, -40, 40)
 		#mouse_vel.x = clamp(mouse_vel.x, -1, 1)
 	if Input.is_action_just_pressed('interact'):
 		if npc_input_need != null:

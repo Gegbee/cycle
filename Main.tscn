@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://n113x6kgy4xd"]
+[gd_scene load_steps=8 format=3 uid="uid://n113x6kgy4xd"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_rj8hx"]
 [ext_resource type="PackedScene" uid="uid://ctmb84aff7y1u" path="res://Player/Player.tscn" id="2_4d4nc"]
+[ext_resource type="Script" path="res://CustomCamera.gd" id="2_7r746"]
 [ext_resource type="PackedScene" uid="uid://cn3fsr0vvmku0" path="res://Dialog/CfNPC.tscn" id="4_37wy4"]
 [ext_resource type="Texture2D" uid="uid://bd3hdfgmrc7u7" path="res://Assets/TestMap.png" id="4_qktpp"]
 [ext_resource type="Texture2D" uid="uid://bp522yvyng1hf" path="res://Assets/Levels/Level1.png" id="5_tkvxj"]
@@ -22,23 +23,41 @@ polygon = PackedVector2Array(-72, 0, -112, -136, -232, -184, -232, -216, -248, -
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Col"]
 
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-698, -2262, -697, -2008, -532, -2009, -533, -2264)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-983, -2054, -960, -2026, -849, -2119, -874, -2147)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-965, -1700, -966, -1524, -879, -1526, -878, -1701)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-694, -1623, -694, -1446, -529, -1445, -530, -1624)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(146, 0, 191, -36, 263, -51, 302, -87, 369, -117, 399, -111, 465, -77, 508, -88, 549, -78, 597, -52, 648, 1)
+
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-219, -1502, -224, -1468, -69, -1443, -63, -1480)
+
 [node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(1254, -1390, 1260, 16, 1374, 20, 1384, -1400)
+polygon = PackedVector2Array(1252, -2915, 1253, 15, 1374, 20, 1377, -2907)
 
 [node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-1248, -1387, -1248, 16, -1391, 13, -1385, -1403)
+polygon = PackedVector2Array(-1245, -2119, -1243, -1871, -1152, -1873, -1150, -1700, -1245.59, -1699.6, -1248, 16, -1391, 13, -1507, -2120)
 
 [node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(1117, -1186, 1124, -1166, 1252, -1224, 1253, -1264)
+polygon = PackedVector2Array(1118, -1168, 1126, -1146, 1164, -1153, 1253, -1074, 1253, -1264)
 
 [node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(932, -941, 934, -909, 1253, -907, 1255, -941)
 
 [node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(562, -879, 564, -844, 745, -844, 743, -881)
+polygon = PackedVector2Array(156, -1561, 165, -1523, 331, -1555, 333, -1445, 608, -1447, 626, -1417, 753, -1353, 816, -1289, 843, -1309, 788, -1378, 648, -1450, 627, -1485, 544, -1484, 544, -1694, 332, -1694, 331, -1595)
 
 [node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(111, -817, 108, -779, 355, -755, 358, -790)
+polygon = PackedVector2Array(111, -817, 108, -779, 355, -755, 664, -844, 750, -845, 749, -881, 555, -881, 553, -851, 350, -793)
 
 [node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(-879, -731, -871, -692, -349, -808, -359, -844)
@@ -68,11 +87,14 @@ polygon = PackedVector2Array(456, -536, 560, -584, 568, -624, 688, -712, 704, -6
 position = Vector2(2272, -5.59998)
 polygon = PackedVector2Array(-344, -536, -336, -520, 32, -640, 64, -640, 64, -584, 104, -584, 104, -640, 224, -640, 224, -656, 32, -656)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -624)
-zoom = Vector2(0.715, 0.715)
+[node name="CustomCamera" type="Camera2D" parent="."]
+position = Vector2(0, -684)
+zoom = Vector2(0.7, 0.7)
+position_smoothing_enabled = true
+script = ExtResource("2_7r746")
 
 [node name="Player" parent="." instance=ExtResource("2_4d4nc")]
+position = Vector2(-25, -29)
 
 [node name="TestMap" type="Sprite2D" parent="."]
 z_index = -2
@@ -84,5 +106,5 @@ position = Vector2(472, 0)
 
 [node name="Level1" type="Sprite2D" parent="."]
 z_index = -11
-position = Vector2(0, -635)
+position = Vector2(-1375, -1385)
 texture = ExtResource("5_tkvxj")
