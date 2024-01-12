@@ -7,7 +7,7 @@ extends Node2D
 const LEAN_POWER := 700.0
 var jump_cooldown : float = 0.0
 var jump_mult : float = 0.0
-const INIT_JUMP_SPEED = 15000
+const INIT_JUMP_SPEED = 16000
 const JUMP_CHARGE_TIME := 0.5
 
 enum {
@@ -29,7 +29,7 @@ var target_player_rot : float = 0.0
 var body_rot_pid = PID.new(7000.0, 0.0, 0.0, 0.0)
 var wheel_vel_to_lean_ratio : float = 80
 
-var keys : bool = true
+var keys : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -48,7 +48,8 @@ func _process(delta):
 		return
 	
 	var horz1 = Input.get_action_strength("right") - Input.get_action_strength("left")
-	mouse_vel.x = horz1 * 20
+	if keys:
+		mouse_vel.x = horz1 * 20
 	#if wheel.is_on_floor:
 	#	body.apply_impulse(Vector2(-horz1 * delta * LEAN_POWER, 0), Vector2(0, -250))
 	#else:
@@ -62,9 +63,9 @@ func _process(delta):
 		#wheel.apply_torque_impulse(wheel_pid.step(-wheel.rotation, delta) * delta)
 	if wheel.is_on_floor:
 		#body.apply_force(Vector2(body_pid.step(target_player_rot-body.rotation, delta) * delta, 0), Vector2(0, -250))
-		body.apply_impulse(Vector2(mouse_vel.x * 100 * delta, 0), Vector2(0, -250))
+		body.apply_impulse(Vector2(mouse_vel.x * 100/2 * delta, 0), Vector2(0, -250))
 	else:
-		body.apply_impulse(Vector2(mouse_vel.x * 20 * delta, 0), Vector2(0, -250))
+		body.apply_impulse(Vector2(mouse_vel.x * 20/2 * delta, 0), Vector2(0, -250))
 	if (Input.is_action_just_released("jump")) and jump_mult > 0 and jump_cooldown <= 0.0 and wheel.is_on_floor:
 			jump_cooldown = 0.2
 			#linear_velocity.y = 0
@@ -105,6 +106,7 @@ func _input(event):
 		if abs(mouse_vel.x) < 1:
 			mouse_vel.x = 0
 		target_player_rot = clamp(mouse_vel.x, -40, 40)
+		print(target_player_rot)
 		#mouse_vel.x = clamp(mouse_vel.x, -1, 1)
 	if Input.is_action_just_pressed('interact'):
 		if npc_input_need != null:

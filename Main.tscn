@@ -12,6 +12,28 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rj8hx")
 
+[node name="Level1" type="Sprite2D" parent="."]
+z_index = -11
+position = Vector2(-1375, -1385)
+texture = ExtResource("5_tkvxj")
+
+[node name="CustomCamera" type="Camera2D" parent="."]
+position = Vector2(0, -684)
+zoom = Vector2(0.7, 0.7)
+position_smoothing_enabled = true
+script = ExtResource("2_7r746")
+
+[node name="Player" parent="." instance=ExtResource("2_4d4nc")]
+position = Vector2(-25, -29)
+
+[node name="TestMap" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(2400, -477.6)
+texture = ExtResource("4_qktpp")
+
+[node name="CfNPC" parent="." instance=ExtResource("4_37wy4")]
+position = Vector2(472, 0)
+
 [node name="Col" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Col"]
@@ -48,7 +70,7 @@ polygon = PackedVector2Array(1252, -2915, 1253, 15, 1374, 20, 1377, -2907)
 polygon = PackedVector2Array(-1245, -2119, -1243, -1871, -1152, -1873, -1150, -1700, -1245.59, -1699.6, -1248, 16, -1391, 13, -1507, -2120)
 
 [node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(1118, -1168, 1126, -1146, 1164, -1153, 1253, -1074, 1253, -1264)
+polygon = PackedVector2Array(1118, -1168, 1126, -1146, 1164, -1153, 1253, -1074, 1253, -1251)
 
 [node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(932, -941, 934, -909, 1253, -907, 1255, -941)
@@ -86,25 +108,3 @@ polygon = PackedVector2Array(456, -536, 560, -584, 568, -624, 688, -712, 704, -6
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Col"]
 position = Vector2(2272, -5.59998)
 polygon = PackedVector2Array(-344, -536, -336, -520, 32, -640, 64, -640, 64, -584, 104, -584, 104, -640, 224, -640, 224, -656, 32, -656)
-
-[node name="CustomCamera" type="Camera2D" parent="."]
-position = Vector2(0, -684)
-zoom = Vector2(0.7, 0.7)
-position_smoothing_enabled = true
-script = ExtResource("2_7r746")
-
-[node name="Player" parent="." instance=ExtResource("2_4d4nc")]
-position = Vector2(-25, -29)
-
-[node name="TestMap" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(2400, -477.6)
-texture = ExtResource("4_qktpp")
-
-[node name="CfNPC" parent="." instance=ExtResource("4_37wy4")]
-position = Vector2(472, 0)
-
-[node name="Level1" type="Sprite2D" parent="."]
-z_index = -11
-position = Vector2(-1375, -1385)
-texture = ExtResource("5_tkvxj")

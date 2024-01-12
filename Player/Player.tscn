@@ -47,7 +47,7 @@ gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 4
 contact_monitor = true
-angular_damp = 1.0
+angular_damp = 4.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
 position = Vector2(-8, -160)
