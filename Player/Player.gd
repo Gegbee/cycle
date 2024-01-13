@@ -65,7 +65,8 @@ func _process(delta):
 		#body.apply_force(Vector2(body_pid.step(target_player_rot-body.rotation, delta) * delta, 0), Vector2(0, -250))
 		body.apply_impulse(Vector2(mouse_vel.x * 100/2 * delta, 0), Vector2(0, -250))
 	else:
-		body.apply_impulse(Vector2(mouse_vel.x * 20/2 * delta, 0), Vector2(0, -250))
+		body.apply_central_impulse(Vector2(mouse_vel.x * 50 * delta, 0))
+		body.apply_impulse(Vector2(mouse_vel.x * 30 * delta, 0), Vector2(0, -250))
 	if (Input.is_action_just_released("jump")) and jump_mult > 0 and jump_cooldown <= 0.0 and wheel.is_on_floor:
 			jump_cooldown = 0.2
 			#linear_velocity.y = 0
