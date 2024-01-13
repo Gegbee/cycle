@@ -1,6 +1,7 @@
 extends Node
 
 var scenes_in_game : Dictionary = {
+	"Splash" : preload("res://UI/SplashMenu.tscn"),
 	"Main" : preload("res://Main.tscn"),
 }
 var cur_scene_name = 3
@@ -16,7 +17,7 @@ var trans_type = "pinhole"
 func _ready():
 	$CanvasLayer2/ColorRect.color = "000000"
 	add_to_group('controller')
-	call_deferred("switch_scene", "MainMenu", 0.0, 1.0, "pinhole")
+	call_deferred("switch_scene", "Splash", 0.0, 1.0, "pinhole")
 	Global.scene_controller = self
 	
 var ff := 0.0

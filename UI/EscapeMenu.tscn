@@ -1,0 +1,233 @@
+[gd_scene load_steps=25 format=3 uid="uid://yupxk4j4c6ad"]
+
+[ext_resource type="Script" path="res://UI/EscapeMenu.gd" id="1_a4l44"]
+[ext_resource type="Shader" path="res://Assets/WobbleImage.gdshader" id="2_jba2c"]
+[ext_resource type="Texture2D" uid="uid://p5b7dxvrln1e" path="res://Assets/Icons/LogoWEscape.png" id="3_ada0g"]
+[ext_resource type="FontFile" uid="uid://ch3qfkeod36pt" path="res://Assets/Pangolin-Regular.ttf" id="4_7ybtd"]
+[ext_resource type="Script" path="res://UI/EscapeMenuButton.gd" id="4_paxft"]
+[ext_resource type="AudioStream" uid="uid://va1stqyslbj1" path="res://Assets/Audio/Custom SFX/ABS-SFX-Impact-MedHit.wav" id="6_5xtp8"]
+[ext_resource type="AudioStream" uid="uid://cuubcd4qn3u7h" path="res://Assets/Audio/Music/ASHESTOASHES-CONSTRUCTION2.mp3" id="6_f5idk"]
+[ext_resource type="FontFile" uid="uid://b1pw223yposnm" path="res://Assets/OpenDyslexic-Regular.otf" id="6_irg6p"]
+[ext_resource type="AudioStream" uid="uid://cvrl2wnpxv8tg" path="res://Assets/Audio/Custom SFX/ABS-SFX-Impact-Jumble.wav" id="7_vbqan"]
+[ext_resource type="AudioStream" uid="uid://bgmh71d2gfhfi" path="res://Assets/Audio/Custom SFX/ABS-SFX-Impact-MediumHit.wav" id="8_jhky5"]
+[ext_resource type="AudioStream" uid="uid://doyh67151hjj" path="res://Assets/Audio/Custom SFX/ABS-SFX-Impact-MetalSoft.wav" id="9_2luky"]
+[ext_resource type="AudioStream" uid="uid://cdelby8qpxvnq" path="res://Assets/Audio/Custom SFX/ABS-SFX-Impact-MetalKeyJingle.wav" id="10_jxb66"]
+[ext_resource type="AudioStream" uid="uid://d2yrbqyrdmmm3" path="res://Assets/Audio/Custom SFX/ABS-SFX-VocalDeep.mp3" id="11_wpbry"]
+[ext_resource type="AudioStream" uid="uid://dv3pul01v8gbv" path="res://Assets/Audio/ABS-vocal.wav" id="12_vrlr7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3e8q"]
+shader = ExtResource("2_jba2c")
+shader_parameter/time_factor = 6.0
+shader_parameter/amplitude = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yckdt"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 2
+expand_margin_left = 80.0
+expand_margin_top = 60.0
+expand_margin_right = 80.0
+expand_margin_bottom = 60.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3376u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3a4f0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gcik"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mc7wy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6puml"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37pv7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiq3n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xdir"]
+
+[node name="EscapeMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_a4l44")
+
+[node name="Control" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer"]
+z_index = -1
+material = SubResource("ShaderMaterial_w3e8q")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yckdt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_ada0g")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
+theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_font_sizes/font_size = 30
+text = "WASD/ARROWS -> MOVE
+Z/E -> TALK
+X/F -> INTERACT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.117647)
+theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3376u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3a4f0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1gcik")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mc7wy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6puml")
+text = "> EXIT TO MENU"
+script = ExtResource("4_paxft")
+nodepath_below = NodePath("../Button2")
+
+[node name="Button2" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.117647)
+theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_37pv7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oiq3n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1xdir")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mc7wy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6puml")
+text = "> EXIT TO DESKTOP"
+script = ExtResource("4_paxft")
+nodepath_above = NodePath("../Button")
+
+[node name="Button3" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.117647)
+theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3376u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3a4f0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1gcik")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mc7wy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6puml")
+text = "
+Music: 5"
+script = ExtResource("4_paxft")
+nodepath_below = NodePath("../Button4")
+nodepath_above = NodePath("../Button2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button3"]
+stream = ExtResource("6_f5idk")
+volume_db = 3.521
+bus = &"DemoMusic"
+
+[node name="Button4" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.313726)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.117647)
+theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3376u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3a4f0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1gcik")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mc7wy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6puml")
+text = "SFX: 5"
+script = ExtResource("4_paxft")
+nodepath_above = NodePath("../Button3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4"]
+stream = ExtResource("6_5xtp8")
+volume_db = 0.77
+bus = &"DemoSFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4"]
+stream = ExtResource("7_vbqan")
+volume_db = 6.933
+bus = &"DemoSFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4"]
+stream = ExtResource("8_jhky5")
+volume_db = 5.393
+bus = &"DemoSFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4"]
+stream = ExtResource("9_2luky")
+volume_db = 5.393
+bus = &"DemoSFX"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4"]
+stream = ExtResource("10_jxb66")
+volume_db = 5.393
+bus = &"DemoSFX"
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4"]
+stream = ExtResource("11_wpbry")
+volume_db = 5.393
+bus = &"DemoSFX"
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4"]
+stream = ExtResource("12_vrlr7")
+volume_db = 16.178
+bus = &"DemoSFX"
+
+[node name="HSlider" type="CheckButton" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_irg6p")
+theme_override_font_sizes/font_size = 22
+text = "Accessibility Mode"
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
+theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_font_sizes/font_size = 30
+text = "ELAPSED TIME: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Control/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/VBoxContainer/VBoxContainer/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/VBoxContainer/VBoxContainer/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/VBoxContainer/VBoxContainer/Button4" to="." method="_on_button_4_button_down"]
+[connection signal="toggled" from="Control/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_toggled"]
