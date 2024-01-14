@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://big5f0hp7fahf"]
+[gd_scene load_steps=5 format=3 uid="uid://big5f0hp7fahf"]
 
 [ext_resource type="Script" path="res://SceneController.gd" id="1_t0uy1"]
 [ext_resource type="Shader" path="res://SceneController.gdshader" id="2_tixc8"]
+[ext_resource type="PackedScene" uid="uid://yupxk4j4c6ad" path="res://UI/EscapeMenu.tscn" id="3_dyhbj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wre3u"]
 shader = ExtResource("2_tixc8")
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 11
@@ -36,9 +38,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="EscapeMenu" parent="." instance=ExtResource("3_dyhbj")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

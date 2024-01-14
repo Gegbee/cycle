@@ -32,7 +32,6 @@ var wheel_vel_to_lean_ratio : float = 80
 var keys : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	add_child(dialog_entity)
 	Global.player = self
 	#await get_tree().create_timer(1.0).timeout
@@ -63,10 +62,10 @@ func _process(delta):
 		#wheel.apply_torque_impulse(wheel_pid.step(-wheel.rotation, delta) * delta)
 	if wheel.is_on_floor:
 		#body.apply_force(Vector2(body_pid.step(target_player_rot-body.rotation, delta) * delta, 0), Vector2(0, -250))
-		body.apply_impulse(Vector2(mouse_vel.x * 100/2 * delta, 0), Vector2(0, -250))
+		body.apply_impulse(Vector2(mouse_vel.x * 100/2/35.0 * Global.sense, 0), Vector2(0, -250))
 	else:
-		body.apply_central_impulse(Vector2(mouse_vel.x * 50 * delta, 0))
-		body.apply_impulse(Vector2(mouse_vel.x * 30 * delta, 0), Vector2(0, -250))
+		body.apply_central_impulse(Vector2(mouse_vel.x * 50/50.0 * Global.sense, 0))
+		body.apply_impulse(Vector2(mouse_vel.x * 30/35.0 * Global.sense, 0), Vector2(0, -250))
 	if (Input.is_action_just_released("jump")) and jump_mult > 0 and jump_cooldown <= 0.0 and wheel.is_on_floor:
 			jump_cooldown = 0.2
 			#linear_velocity.y = 0
