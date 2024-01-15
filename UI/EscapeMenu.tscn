@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://yupxk4j4c6ad"]
+[gd_scene load_steps=18 format=3 uid="uid://yupxk4j4c6ad"]
 
 [ext_resource type="Script" path="res://UI/EscapeMenu.gd" id="1_a4l44"]
 [ext_resource type="Shader" path="res://Assets/WobbleImage.gdshader" id="2_jba2c"]
-[ext_resource type="Texture2D" uid="uid://by1w25w8wgvs" path="res://Assets/Icons/LogoSmall.png" id="3_3k3r1"]
+[ext_resource type="Texture2D" uid="uid://dmb3tfesshcho" path="res://Assets/Icons/LogoSmallColor.png" id="3_7aqkm"]
 [ext_resource type="FontFile" uid="uid://cpjahop31ai3t" path="res://Assets/Pangolin-Regular.ttf" id="4_7ybtd"]
 [ext_resource type="Script" path="res://UI/EscapeMenuButton.gd" id="4_paxft"]
 
@@ -23,6 +23,23 @@ expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 60.0
 anti_aliasing = false
+
+[sub_resource type="Shader" id="Shader_fxucp"]
+code = "shader_type canvas_item;
+
+uniform float time_factor = 0.2;
+uniform vec2 amplitude = vec2(20.0,5.0);
+
+void vertex() {
+	// cos giving float between -1, 1
+	VERTEX.x += step(cos(TIME * time_factor + VERTEX.x + VERTEX.y) + 1.0, 1.0) * amplitude.x;
+	VERTEX.y += step(cos(TIME * time_factor + VERTEX.x + VERTEX.y) + 1.0, 1.0) * amplitude.y;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jocjj"]
+shader = SubResource("Shader_fxucp")
+shader_parameter/time_factor = 7.76
+shader_parameter/amplitude = Vector2(2, 2)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3376u"]
 
@@ -65,8 +82,10 @@ layout_mode = 2
 theme_override_constants/separation = 50
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_jocjj")
 layout_mode = 2
-texture = ExtResource("3_3k3r1")
+texture = ExtResource("3_7aqkm")
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2

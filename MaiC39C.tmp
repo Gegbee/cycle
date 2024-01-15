@@ -34,7 +34,7 @@ script = ExtResource("1_rj8hx")
 
 [node name="Level1" type="Sprite2D" parent="."]
 z_index = -11
-position = Vector2(-1375, -2135)
+position = Vector2(-1375, -1385)
 texture = ExtResource("5_tkvxj")
 
 [node name="CustomCamera" type="Camera2D" parent="."]

@@ -30,6 +30,18 @@ var body_rot_pid = PID.new(7000.0, 0.0, 0.0, 0.0)
 var wheel_vel_to_lean_ratio : float = 80
 
 var keys : bool = false
+
+var prev_vel : Vector2 = Vector2()
+var cur_vel : Vector2 = Vector2()
+var blink_timer = 0.0
+const BLINK_TIME : float = 2.6
+
+@onready var fish_tail = $Body/FishTail
+@onready var fish_body = $Body/FishBody
+@onready var eye = $Body/Eye
+@onready var pedal_1 = $Pedal1
+@onready var pedal_2 = $Pedal2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(dialog_entity)
@@ -42,9 +54,22 @@ func _process(delta):
 	$NoRotation.global_position = $Wheel.global_position
 	$Body/Sprite2D.position.y = -144 + jump_mult * 10
 	$Body/Sprite2D.scale.y = 1.0 - 0.1*jump_mult
+	#fish_tail.position = lerpf()
+	if blink_timer >= BLINK_TIME:
+		eye.play("blink")
+		blink_timer = 0.0
+	else:
+		blink_timer += delta
+		
 	if state != ACTIVE:
 		autobalance(delta)
 		return
+	pedal_1.global_position = $Wheel/Pedal1.global_position
+	pedal_2.global_position = $Wheel/Pedal2.global_position
+	#if (prev_vel - cur_vel).length() > 20:
+	#	eye.play("squint")
+	#prev_vel = cur_vel
+	#cur_vel = body.linear_velocity
 	
 	var horz1 = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if keys:
@@ -145,3 +170,8 @@ func _on_area_2d_body_exited(body):
 	if body is NPC2D:
 		body.notify_near(false)
 		npcs_in_range.erase(body)
+
+
+func _on_eye_animation_finished():
+	if eye.animation == "blink":
+		eye.play("open")

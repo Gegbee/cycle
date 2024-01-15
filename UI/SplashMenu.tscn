@@ -18,8 +18,8 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pn28a"]
 shader = SubResource("Shader_fxucp")
-shader_parameter/time_factor = 2.0
-shader_parameter/amplitude = Vector2(5, 5)
+shader_parameter/time_factor = 7.76
+shader_parameter/amplitude = Vector2(2, 2)
 
 [node name="SplashMenu" type="Control"]
 layout_mode = 3
