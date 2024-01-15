@@ -171,9 +171,9 @@ func roll_text(new_text : String):
 #		print(t.size)
 		t.size = t.get('theme_override_fonts/normal_font').get_string_size(new_text)
 #		print(t.size)
-		if t.size.x > 300:
+		if t.size.x > 100:
 			t.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			t.size.x = 320
+			t.size.x = 200
 		else:
 			t.size = Vector2()
 			t.autowrap_mode = TextServer.AUTOWRAP_OFF

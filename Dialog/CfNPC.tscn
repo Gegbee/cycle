@@ -4,5 +4,9 @@
 
 [node name="CfNPC" instance=ExtResource("1_rnv4x")]
 
+[node name="DialogBubble" parent="." index="1"]
+position = Vector2(0, -224)
+
 [node name="Notifier" parent="." index="2"]
 z_index = 12
+position = Vector2(0, -224)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3u4i441qjk7w"]
+
+[ext_resource type="PackedScene" uid="uid://ds61jvf2crebk" path="res://Dialog/NPC.tscn" id="1_5qee8"]
+
+[node name="MbNPC" instance=ExtResource("1_5qee8")]
+
+[node name="DialogBubble" parent="." index="1"]
+position = Vector2(0, -424)

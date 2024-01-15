@@ -29,3 +29,20 @@
 	cf |-| Think about me.
 	cf |-| Imagine I'm up there with you.
 	cf |-| Whether it's hell or heaven.
+
+> mb-1 > T
+	| init
+	mb |-| You stupid fish!
+	mb |-| Now you see your suffering!
+	mb |-| If this doesn't teach you a lesson...
+	mb |-| I don't know what will.
+	mb2 |-| The boss don't appreciate what you did.
+	mb2 |-| His sister is very special to him.
+	mb2 |-| And you betrayed his trust.
+	mb2 |-| Maybe if you make it out of this pit...
+	mb2 |-| You can give your buddies a warning.
+
+> mb-2 > T
+	| init
+	mb |-| Have fun down there.
+	mb |-| You'll maybe even see a buddy or two.

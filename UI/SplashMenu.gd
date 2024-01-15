@@ -11,7 +11,6 @@ func _process(delta):
 	pass
 
 func _input(event):
-	if event.is_action_pressed("accept") and !pressed:
-		pressed = true
+	if event.is_action_pressed("accept"):
 		if is_instance_valid(Global.scene_controller):
-			Global.scene_controller.switch_scene("Main", 1.0, 1.0, "pinhole")
+			Global.scene_controller.switch_scene("Intro", 1.0, 1.0, "pinhole")

@@ -29,4 +29,4 @@ script = ExtResource("1_qjkex")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kjr1m")
 animation = &"interact"
-frame_progress = 0.894183
+frame_progress = 0.719685

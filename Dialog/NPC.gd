@@ -5,7 +5,7 @@ class_name NPC2D
 
 var past_convos : Array = []
 var current_convo_set : int = 0
-var base_convos : Array = []
+var base_convos : Array = [[]]
 var times_talked_to : int = 0
 
 func _ready():
