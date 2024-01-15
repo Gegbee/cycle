@@ -131,7 +131,7 @@ func _input(event):
 		if abs(mouse_vel.x) < 1:
 			mouse_vel.x = 0
 		target_player_rot = clamp(mouse_vel.x, -40, 40)
-		print(target_player_rot)
+		#print(target_player_rot)
 		#mouse_vel.x = clamp(mouse_vel.x, -1, 1)
 	if Input.is_action_just_pressed('interact'):
 		if npc_input_need != null:

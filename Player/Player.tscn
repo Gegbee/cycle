@@ -91,19 +91,21 @@ contact_monitor = true
 angular_damp = 4.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
-modulate = Color(1, 1, 1, 0.243137)
 position = Vector2(-8, -160)
 texture = ExtResource("6_g13yf")
 
 [node name="FishTail" type="Sprite2D" parent="Body"]
+visible = false
 position = Vector2(39, -205)
 texture = ExtResource("6_831g7")
 
 [node name="FishBody" type="Sprite2D" parent="Body"]
+visible = false
 position = Vector2(-3, -160)
 texture = ExtResource("5_gfu72")
 
 [node name="Eye" type="AnimatedSprite2D" parent="Body"]
+visible = false
 position = Vector2(13, -235)
 sprite_frames = SubResource("SpriteFrames_hfbg2")
 animation = &"blink"
@@ -149,17 +151,20 @@ texture = ExtResource("6_g13yf")
 position = Vector2(0, -144)
 
 [node name="Pedal1" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 position = Vector2(25, -40)
 texture = ExtResource("11_7rdlq")
 
 [node name="Pedal2" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 z_index = -1
 position = Vector2(-23, -40)
 texture = ExtResource("11_7rdlq")
 
 [node name="UpperLeg1" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 position = Vector2(15, -138)
 texture = ExtResource("12_gh3gl")
@@ -168,17 +173,20 @@ texture = ExtResource("12_gh3gl")
 position = Vector2(2, 39)
 
 [node name="LowerLeg1" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 position = Vector2(17, -69)
 texture = ExtResource("13_e4vwo")
 
 [node name="UpperLeg2" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 z_index = -1
 position = Vector2(-10, -138)
 texture = ExtResource("12_gh3gl")
 
 [node name="LowerLeg2" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 z_index = -1
 position = Vector2(-8, -67)
