@@ -13,3 +13,5 @@ func _ready():
 
 func _process(delta):
 	label.text = str(int(-$Player.get_node("NoRotation/Center").global_position.y / 50)) + "m / " + str(int(4500/50)) + "m"
+
+

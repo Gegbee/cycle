@@ -13,5 +13,6 @@ func _integrate_forces(state):
 
 
 func _on_body_entered(body):
-	pass
+	if body.is_in_group('falling'):
+		body.start_fall()
 	#apply_central_impulse(Vector2.UP * linear_velocity.y / 2 * 1000000)

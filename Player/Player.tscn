@@ -59,7 +59,7 @@ size = Vector2(592, 224)
 [node name="Player" type="Node2D"]
 script = ExtResource("1_ae5wc")
 
-[node name="Wheel" type="RigidBody2D" parent="."]
+[node name="Wheel" type="RigidBody2D" parent="." groups=["player"]]
 position = Vector2(0, -40)
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_d2d77")

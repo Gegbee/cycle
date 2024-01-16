@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://n113x6kgy4xd"]
+[gd_scene load_steps=24 format=3 uid="uid://n113x6kgy4xd"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_rj8hx"]
 [ext_resource type="PackedScene" uid="uid://ctmb84aff7y1u" path="res://Player/Player.tscn" id="2_4d4nc"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bp522yvyng1hf" path="res://Assets/Levels/Level1.png" id="5_tkvxj"]
 [ext_resource type="FontFile" uid="uid://cpjahop31ai3t" path="res://Assets/Pangolin-Regular.ttf" id="7_313mj"]
 [ext_resource type="Shader" path="res://Assets/WobbleImage.gdshader" id="8_4shi0"]
+[ext_resource type="Script" path="res://FallingRock1.gd" id="9_e5sfk"]
+[ext_resource type="Texture2D" uid="uid://bchd56nt48bug" path="res://Assets/Levels/F1.png" id="10_127qo"]
+[ext_resource type="Texture2D" uid="uid://bd8sjlerbcjna" path="res://Assets/Levels/F3.png" id="11_dx5pa"]
+[ext_resource type="Texture2D" uid="uid://bbp0xga2g2vrl" path="res://Assets/Levels/F2.png" id="12_37s5x"]
+[ext_resource type="Texture2D" uid="uid://duspxysjfj2ce" path="res://Assets/Levels/F4.png" id="13_77mad"]
+[ext_resource type="Texture2D" uid="uid://copjvgf8wvsy6" path="res://Assets/Levels/F5.png" id="14_aa4l6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1543q"]
 
@@ -29,6 +35,52 @@ expand_margin_right = 25.0
 expand_margin_bottom = 15.0
 anti_aliasing = false
 
+[sub_resource type="Curve" id="Curve_vjhgd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_18xv0"]
+curve = SubResource("Curve_vjhgd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qaem1"]
+emission_shape = 3
+emission_box_extents = Vector3(79.26, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 200, 0)
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -348.6
+angle_max = 272.8
+scale_min = 0.2
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_18xv0")
+color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_jbmi6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8mwul"]
+curve = SubResource("Curve_jbmi6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vvgy3"]
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 200, 0)
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -348.6
+angle_max = 272.8
+scale_min = 0.2
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_8mwul")
+color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rj8hx")
 
@@ -43,7 +95,7 @@ zoom = Vector2(0.7, 0.7)
 script = ExtResource("2_7r746")
 
 [node name="Player" parent="." instance=ExtResource("2_4d4nc")]
-position = Vector2(-1275, -2134)
+position = Vector2(-3759, -3657)
 
 [node name="TestMap" type="Sprite2D" parent="."]
 z_index = -2
@@ -64,29 +116,17 @@ polygon = PackedVector2Array(-72, 0, -112, -136, -232, -184, -232, -216, -248, -
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Col"]
 
+[node name="CollisionPolygon2D28" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-1498, -3634, -1495, -3292, -1560, -3155, -1533, -3041, -1537, -2976, -1497, -2893, -1499, -2724, -1320, -2722, -1241, -2682, -1176, -2733, -1176, -2796, -1214, -2864, -1201, -2974, -1237, -3052, -1248, -3122, -1247, -3563, -1086, -3586, -1089, -3620, -1247, -3598, -1249, -3635)
+
 [node name="CollisionPolygon2D35" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-3695, -2337, -3669, -2293, -3633, -2308, -3625, -2348, -3673, -2385)
+polygon = PackedVector2Array(-3696, -2335, -3669, -2293, -3633, -2308, -3614, -2361, -3685, -2367)
 
 [node name="CollisionPolygon2D34" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-3532, -2167, -3503, -2194, -3404, -2155, -3402, -2089, -3516, -2079)
+polygon = PackedVector2Array(-3532, -2167, -3503, -2194, -3402, -2194, -3402, -2089, -3516, -2079)
 
 [node name="CollisionPolygon2D33" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(-2950, -2538, -2973, -2367, -2988, -2053, -2645, -1848, -2515, -1981, -2401, -1981, -2363, -2009, -2352, -2032, -2394, -2139, -2380, -2225, -2428, -2225, -2490, -2292, -2522, -2293, -2535, -2203, -2537, -2127, -2549, -2083, -2630, -2068, -2715, -2117, -2763, -2219, -2778, -2367, -2763, -2469, -2850, -2471, -2865, -2530, -2888, -2545)
-
-[node name="CollisionPolygon2D32" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-1912, -3458, -1915, -3418, -1870, -3400, -1806, -3421, -1738, -3472, -1736, -3493, -1821, -3492)
-
-[node name="CollisionPolygon2D31" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-2229, -3491, -2229, -3449, -2188, -3420, -2165, -3459, -2166, -3491)
-
-[node name="CollisionPolygon2D30" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-2401, -3450, -2399, -3410, -2367, -3377, -2324, -3402, -2324, -3450)
-
-[node name="CollisionPolygon2D29" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-2658, -3413, -2657, -3356, -2626, -3289, -2581, -3325, -2555, -3412)
-
-[node name="CollisionPolygon2D28" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-3094, -3456, -3016, -3503, -2861, -3501, -2836, -3454, -2890, -3393, -2971, -3367, -3036, -3426, -3088, -3436)
 
 [node name="CollisionPolygon2D27" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(-3813, -3651, -3820, -3625, -3803, -3582, -3737, -3589, -3722, -3628, -3794, -3629)
@@ -126,7 +166,7 @@ polygon = PackedVector2Array(-219, -1502, -224, -1468, -69, -1443, -63, -1480)
 polygon = PackedVector2Array(1252, -2915, 1253, 15, 1374, 20, 1377, -2907)
 
 [node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-1248, -2117, -1243, -1871, -1152, -1873, -1163, -1784, -1150, -1700, -1223, -1672, -1249, -1588, -1248, 16, -1391, 13, -4124, -1383, -4116, -4393, -3999, -4158, -3999, -3470, -3925, -3450, -3942, -3412, -3995, -3415, -3998, -2911, -3940, -2911, -3941, -2742, -3869, -2742, -3881, -2640, -3865, -2576, -3758, -2574, -3758, -2484, -3808, -2408, -3979, -2369, -4001, -2289, -3999, -2064, -3859, -1811, -3644, -1717, -3506, -1770, -3501, -1812, -3397, -1833, -3377, -1768, -3279, -1715, -3254, -1579, -3188, -1513, -3098, -1501, -1953, -1500, -1869, -1767, -1667, -1701, -1617, -1710, -1603, -1760, -1634, -1834, -1635, -1893, -1554, -1900, -1498, -2002, -1499, -2117, -1445, -2117, -1413, -2193, -1412, -2270, -1354, -2268, -1328, -2194, -1326, -2117)
+polygon = PackedVector2Array(-1248, -2117, -1243, -1871, -1152, -1873, -1163, -1784, -1150, -1700, -1223, -1672, -1249, -1588, -1248, 16, -1391, 13, -4124, -1383, -4116, -4393, -3999, -4158, -3999, -3470, -3925, -3450, -3942, -3412, -3995, -3415, -3998, -2911, -3940, -2911, -3941, -2742, -3869, -2742, -3881, -2640, -3865, -2576, -3758, -2574, -3758, -2484, -3808, -2408, -3979, -2369, -4001, -2289, -3999, -2064, -3859, -1811, -3644, -1717, -3506, -1770, -3501, -1812, -3397, -1833, -3377, -1768, -3279, -1715, -3254, -1579, -3188, -1513, -3098, -1501, -1953, -1500, -1869, -1767, -1667, -1701, -1617, -1710, -1603, -1760, -1634, -1834, -1635, -1893, -1554, -1900, -1498, -2002, -1499, -2117, -1439, -2117, -1421, -2193, -1423, -2270, -1321, -2271, -1323, -2221, -1309, -2191, -1310, -2117)
 
 [node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(1118, -1168, 1126, -1146, 1164, -1153, 1253, -1074, 1253, -1251)
@@ -190,3 +230,122 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e5b7g")
+
+[node name="FallingRock1" type="StaticBody2D" parent="."]
+position = Vector2(-2962, -3440)
+script = ExtResource("9_e5sfk")
+metadata/_edit_group_ = true
+
+[node name="F1" type="Sprite2D" parent="FallingRock1"]
+position = Vector2(-2, 6)
+texture = ExtResource("10_127qo")
+
+[node name="Timer" type="Timer" parent="FallingRock1"]
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingRock1"]
+position = Vector2(2962, 3440)
+polygon = PackedVector2Array(-3094, -3456, -3016, -3503, -2861, -3501, -2836, -3454, -2890, -3393, -2971, -3367, -3036, -3426, -3088, -3436)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FallingRock1"]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_qaem1")
+texture = ExtResource("11_dx5pa")
+lifetime = 6.0
+randomness = 1.0
+
+[node name="FallingRock2" type="StaticBody2D" parent="."]
+position = Vector2(-2621, -3364)
+script = ExtResource("9_e5sfk")
+metadata/_edit_group_ = true
+
+[node name="F1" type="Sprite2D" parent="FallingRock2"]
+position = Vector2(15, 12)
+texture = ExtResource("12_37s5x")
+
+[node name="Timer" type="Timer" parent="FallingRock2"]
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingRock2"]
+position = Vector2(2621, 3364)
+polygon = PackedVector2Array(-2658, -3413, -2657, -3356, -2626, -3289, -2581, -3325, -2555, -3412)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FallingRock2"]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_vvgy3")
+texture = ExtResource("11_dx5pa")
+lifetime = 6.0
+
+[node name="FallingRock3" type="StaticBody2D" parent="."]
+position = Vector2(-2361, -3417)
+script = ExtResource("9_e5sfk")
+metadata/_edit_group_ = true
+
+[node name="F1" type="Sprite2D" parent="FallingRock3"]
+position = Vector2(-2, 3)
+texture = ExtResource("11_dx5pa")
+
+[node name="Timer" type="Timer" parent="FallingRock3"]
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingRock3"]
+position = Vector2(2361, 3417)
+polygon = PackedVector2Array(-2401, -3450, -2399, -3410, -2367, -3377, -2324, -3402, -2324, -3450)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FallingRock3"]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_vvgy3")
+texture = ExtResource("11_dx5pa")
+lifetime = 6.0
+randomness = 1.0
+
+[node name="FallingRock4" type="StaticBody2D" parent="."]
+position = Vector2(-2199, -3460)
+script = ExtResource("9_e5sfk")
+metadata/_edit_group_ = true
+
+[node name="F1" type="Sprite2D" parent="FallingRock4"]
+position = Vector2(2, 4)
+texture = ExtResource("13_77mad")
+
+[node name="Timer" type="Timer" parent="FallingRock4"]
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingRock4"]
+position = Vector2(2199, 3460)
+polygon = PackedVector2Array(-2229, -3491, -2229, -3449, -2188, -3420, -2165, -3459, -2166, -3491)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FallingRock4"]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_vvgy3")
+texture = ExtResource("11_dx5pa")
+lifetime = 6.0
+randomness = 1.0
+
+[node name="FallingRock5" type="StaticBody2D" parent="."]
+position = Vector2(-1827, -3450)
+script = ExtResource("9_e5sfk")
+metadata/_edit_group_ = true
+
+[node name="F1" type="Sprite2D" parent="FallingRock5"]
+position = Vector2(1, 3)
+texture = ExtResource("14_aa4l6")
+
+[node name="Timer" type="Timer" parent="FallingRock5"]
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingRock5"]
+position = Vector2(1827, 3450)
+polygon = PackedVector2Array(-1912, -3458, -1915, -3418, -1870, -3400, -1806, -3421, -1738, -3472, -1736, -3493, -1821, -3492)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FallingRock5"]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_vvgy3")
+texture = ExtResource("11_dx5pa")
+lifetime = 6.0
+
+[connection signal="timeout" from="FallingRock1/Timer" to="FallingRock1" method="_on_timer_timeout"]
+[connection signal="timeout" from="FallingRock2/Timer" to="FallingRock2" method="_on_timer_timeout"]
+[connection signal="timeout" from="FallingRock3/Timer" to="FallingRock3" method="_on_timer_timeout"]
+[connection signal="timeout" from="FallingRock4/Timer" to="FallingRock4" method="_on_timer_timeout"]
+[connection signal="timeout" from="FallingRock5/Timer" to="FallingRock5" method="_on_timer_timeout"]
