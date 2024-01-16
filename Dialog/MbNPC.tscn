@@ -1,8 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3u4i441qjk7w"]
+[gd_scene load_steps=7 format=3 uid="uid://b3u4i441qjk7w"]
 
 [ext_resource type="PackedScene" uid="uid://ds61jvf2crebk" path="res://Dialog/NPC.tscn" id="1_5qee8"]
+[ext_resource type="Script" path="res://Dialog/CfNPC.gd" id="2_4hqib"]
+[ext_resource type="Texture2D" uid="uid://1ay001lhkf86" path="res://Assets/Levels/BirdLegs.png" id="3_o0dsl"]
+[ext_resource type="Texture2D" uid="uid://v20d6lw54ccu" path="res://Assets/Levels/Bird1Body.png" id="4_tabsl"]
+
+[sub_resource type="Animation" id="Animation_eoy3h"]
+resource_name = "speak"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bird1Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, -194), Vector2(-5, -200.055), Vector2(-5, -194)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5ddt"]
+_data = {
+"speak": SubResource("Animation_eoy3h")
+}
 
 [node name="MbNPC" instance=ExtResource("1_5qee8")]
+script = ExtResource("2_4hqib")
 
 [node name="DialogBubble" parent="." index="1"]
 position = Vector2(0, -424)
+
+[node name="Notifier" parent="." index="2"]
+position = Vector2(0, -354)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_s5ddt")
+}
+
+[node name="BirdLegs" type="Sprite2D" parent="." index="4"]
+position = Vector2(0, -72)
+texture = ExtResource("3_o0dsl")
+
+[node name="Bird1Body" type="Sprite2D" parent="." index="5"]
+position = Vector2(-5, -194)
+texture = ExtResource("4_tabsl")

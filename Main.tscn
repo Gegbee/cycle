@@ -95,7 +95,7 @@ zoom = Vector2(0.7, 0.7)
 script = ExtResource("2_7r746")
 
 [node name="Player" parent="." instance=ExtResource("2_4d4nc")]
-position = Vector2(-3759, -3657)
+position = Vector2(1031, -2)
 
 [node name="TestMap" type="Sprite2D" parent="."]
 z_index = -2
@@ -103,6 +103,7 @@ position = Vector2(2400, -477.6)
 texture = ExtResource("4_qktpp")
 
 [node name="CfNPC" parent="." instance=ExtResource("4_37wy4")]
+z_index = -2
 position = Vector2(501, 2)
 
 [node name="Col" type="StaticBody2D" parent="."]
@@ -252,6 +253,7 @@ amount = 2
 process_material = SubResource("ParticleProcessMaterial_qaem1")
 texture = ExtResource("11_dx5pa")
 lifetime = 6.0
+preprocess = 5.0
 randomness = 1.0
 
 [node name="FallingRock2" type="StaticBody2D" parent="."]
@@ -297,6 +299,7 @@ amount = 2
 process_material = SubResource("ParticleProcessMaterial_vvgy3")
 texture = ExtResource("11_dx5pa")
 lifetime = 6.0
+preprocess = 5.0
 randomness = 1.0
 
 [node name="FallingRock4" type="StaticBody2D" parent="."]
@@ -320,6 +323,7 @@ amount = 2
 process_material = SubResource("ParticleProcessMaterial_vvgy3")
 texture = ExtResource("11_dx5pa")
 lifetime = 6.0
+preprocess = 8.0
 randomness = 1.0
 
 [node name="FallingRock5" type="StaticBody2D" parent="."]

@@ -26,6 +26,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/size/borderless=true
+window/stretch/mode="viewport"
 
 [input]
 
@@ -82,3 +83,7 @@ escape={
 [physics]
 
 2d/default_gravity=1000.0
+
+[rendering]
+
+anti_aliasing/screen_space_roughness_limiter/amount=0.01

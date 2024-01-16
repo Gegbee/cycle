@@ -55,7 +55,7 @@ func noti(noti_name, speed = 0.0):
 			anima.play(noti_name)
 			
 func is_notifying():
-	return false if anima.scale.length() == 0 else true
+	return true if anima.scale.length() == 0 else false
 
 func tween_finished():
 	if !is_notifying():

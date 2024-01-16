@@ -41,6 +41,10 @@ const BLINK_TIME : float = 2.6
 @onready var eye = $Body/Eye
 @onready var pedal_1 = $Pedal1
 @onready var pedal_2 = $Pedal2
+@onready var joint_1 = $Joint1
+@onready var joint_11 = $Joint1/Joint11
+@onready var joint_2 = $Joint2
+@onready var joint_21 = $Joint2/Joint21
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -61,16 +65,60 @@ func _process(delta):
 	else:
 		blink_timer += delta
 		
-	if state != ACTIVE:
-		autobalance(delta)
-		return
 	pedal_1.global_position = $Wheel/Pedal1.global_position
 	pedal_2.global_position = $Wheel/Pedal2.global_position
+	
+	# Distance from Joint0 to Target
+	joint_1.global_position = $Body/Joint1.global_position
+	var length0 = (joint_1.global_position - joint_11.global_position).length()
+	var length1 = (joint_11.global_position - $Joint1/Joint11/Hand.global_position).length()
+	var length2 = (joint_1.global_position - $Wheel/Pedal1.global_position).length()
+	# Inner angle alpha
+	
+	var diff = $Wheel/Pedal1.global_position - joint_1.global_position
+	var atan = atan2(diff.y, diff.x) - PI/2
+	if length0+length1 < length2:
+		joint_1.global_rotation = atan
+		joint_11.global_rotation = atan
+	else:
+		var cosAngle0 = ((length2 * length2) + (length0 * length0) - (length1 * length1)) / (2 * length2 * length0)
+		var angle0 = acos(cosAngle0)
+		# Inner angle beta
+		var cosAngle1 = ((length1 * length1) + (length0 * length0) - (length2 * length2)) / (2 * length1 * length0)
+		var angle1 = acos(cosAngle1)
+
+		joint_1.rotation = atan+angle0
+		joint_11.rotation = PI + angle1
+		
+		
+	joint_2.global_position = $Body/Joint2.global_position
+	var length0_ = (joint_2.global_position - joint_21.global_position).length()
+	var length1_ = (joint_21.global_position - $Joint2/Joint21/Hand.global_position).length()
+	var length2_ = (joint_2.global_position - $Wheel/Pedal2.global_position).length()
+	# Inner angle alpha
+	
+	var diff_ = $Wheel/Pedal2.global_position - joint_2.global_position
+	var atan_ = atan2(diff_.y, diff_.x) - PI/2
+	if length0_+length1_ < length2_:
+		joint_2.global_rotation = atan_
+		joint_21.global_rotation = atan_
+	else:
+		var cosAngle0 = ((length2_ * length2_) + (length0_ * length0_) - (length1_ * length1_)) / (2 * length2_ * length0_)
+		var angle0 = acos(cosAngle0)
+		# Inner angle beta
+		var cosAngle1 = ((length1_ * length1_) + (length0_ * length0_) - (length2_ * length2_)) / (2 * length1_ * length0_)
+		var angle1 = acos(cosAngle1)
+
+		joint_2.rotation = atan_+angle0
+		joint_21.rotation = PI + angle1
 	#if (prev_vel - cur_vel).length() > 20:
 	#	eye.play("squint")
 	#prev_vel = cur_vel
 	#cur_vel = body.linear_velocity
-	
+	if state != ACTIVE:
+		autobalance(delta)
+		return
+		
 	var horz1 = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if keys:
 		mouse_vel.x = horz1 * 20

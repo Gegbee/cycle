@@ -1,14 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbjpl8quj3vci"]
+[gd_scene load_steps=16 format=3 uid="uid://dbjpl8quj3vci"]
 
 [ext_resource type="Texture2D" uid="uid://7b7ul4nc5bkk" path="res://Assets/Levels/Scene1.png" id="1_rjxaj"]
 [ext_resource type="Script" path="res://Intro.gd" id="1_yws3i"]
 [ext_resource type="Shader" path="res://Assets/Wind.gdshader" id="2_aax4f"]
 [ext_resource type="Texture2D" uid="uid://b4wlo6l2u028f" path="res://Assets/Levels/Plant1.png" id="3_w4v7h"]
 [ext_resource type="Texture2D" uid="uid://ci5jcvugkrbc1" path="res://Assets/Levels/Plant2.png" id="4_ayf6g"]
-[ext_resource type="PackedScene" uid="uid://ctmb84aff7y1u" path="res://Player/Player.tscn" id="6_rw8sr"]
 [ext_resource type="PackedScene" uid="uid://b3u4i441qjk7w" path="res://Dialog/MbNPC.tscn" id="7_jeu3j"]
-[ext_resource type="Texture2D" uid="uid://bdgitgbewcjfk" path="res://Assets/Levels/Bird1.png" id="8_85cvb"]
-[ext_resource type="Texture2D" uid="uid://camxtbffaj6ov" path="res://Assets/Levels/Bird2.png" id="9_qbi17"]
+[ext_resource type="PackedScene" uid="uid://ctmb84aff7y1u" path="res://Player/Player.tscn" id="8_0xjvd"]
+[ext_resource type="Texture2D" uid="uid://c31g2o6ynhj38" path="res://Assets/Levels/Bird2Body.png" id="8_1gkh8"]
 
 [sub_resource type="Shader" id="Shader_vmoss"]
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
@@ -197,6 +196,7 @@ shader_parameter/offset = 2.615
 script = ExtResource("1_yws3i")
 
 [node name="Scene1" type="Sprite2D" parent="."]
+z_index = -4
 position = Vector2(2, 1)
 texture = ExtResource("1_rjxaj")
 
@@ -253,25 +253,18 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-1057, 775, -1043, 745, -1040, 708, -959, 621, -941, 566, -876, 515, -842, 430, -792, 412, -741, 362, -658, 332, 1377, 331, 1376, -776, 1512, -777, 1509, 786)
 
-[node name="Player" parent="." instance=ExtResource("6_rw8sr")]
-position = Vector2(378, 332)
-
-[node name="Body" parent="Player" index="1"]
-position = Vector2(38, -42)
-rotation = -1.61334
-
 [node name="MbNPC" parent="." instance=ExtResource("7_jeu3j")]
-position = Vector2(884, 331)
+z_index = -2
+position = Vector2(884, 334)
 
 [node name="MbNPC2" parent="." instance=ExtResource("7_jeu3j")]
-position = Vector2(1073, 332)
+z_index = -2
+position = Vector2(1073, 335)
 
-[node name="Bird1" type="Sprite2D" parent="."]
-position = Vector2(881, 192)
-texture = ExtResource("8_85cvb")
+[node name="Bird1Body" parent="MbNPC2" index="5"]
+texture = ExtResource("8_1gkh8")
 
-[node name="Bird2" type="Sprite2D" parent="."]
-position = Vector2(1073, 172)
-texture = ExtResource("9_qbi17")
+[node name="Player" parent="." instance=ExtResource("8_0xjvd")]
+position = Vector2(561, 333)
 
-[editable path="Player"]
+[editable path="MbNPC2"]
