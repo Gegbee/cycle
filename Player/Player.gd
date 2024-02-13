@@ -2,13 +2,20 @@ extends Node2D
 
 @onready var dialog_entity = DialogEntity.new($NoRotation/DialogBubble/RichTextLabel, $NoRotation/DialogBubble/Choices, $NoRotation/DialogBubble)
 
+@export var jump_cooldown_max : float = 0.2
+@export var init_jump_speed : float = 16000
+@export var jump_charge_time : float = 0.5
+@export var max_lean : float = PI/3
+@export var wheel_vel_to_lean_ratio : float = 80
+@export var air_movement : float = 50/30.0
+@export var ground_lean : float = 50/35.0
+@export var air_lean : float = 30/35.0
+
 @onready var body = $Body
 @onready var wheel = $Wheel
 const LEAN_POWER := 700.0
 var jump_cooldown : float = 0.0
 var jump_mult : float = 0.0
-const INIT_JUMP_SPEED = 16000
-const JUMP_CHARGE_TIME := 0.5
 
 enum {
 	ACTIVE,
@@ -27,7 +34,6 @@ var wheelt_pid = PID.new(7000.0, 0.0, 100.0, 0.0)
 var mouse_vel : Vector2 = Vector2()
 var target_player_rot : float = 0.0
 var body_rot_pid = PID.new(7000.0, 0.0, 0.0, 0.0)
-var wheel_vel_to_lean_ratio : float = 80
 
 var keys : bool = false
 
@@ -36,9 +42,9 @@ var cur_vel : Vector2 = Vector2()
 var blink_timer = 0.0
 const BLINK_TIME : float = 2.6
 
-@onready var fish_tail = $Body/FishTail
-@onready var fish_body = $Body/FishBody
-@onready var eye = $Body/Eye
+@onready var fish_tail = $Body/Visible/FishTail
+@onready var fish_body = $Body/Visible/FishBody
+@onready var eye = $Body/Visible/Eye
 @onready var pedal_1 = $Pedal1
 @onready var pedal_2 = $Pedal2
 @onready var joint_1 = $Joint1
@@ -55,9 +61,14 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# COSMETIC
 	$NoRotation.global_position = $Wheel.global_position
-	$Body/Sprite2D.position.y = -144 + jump_mult * 10
-	$Body/Sprite2D.scale.y = 1.0 - 0.1*jump_mult
+	$Body/Visible.position.y = jump_mult * 4
+	if 1.0 - 0.02*jump_mult > $Body/Visible.scale.y:
+		$Body/Visible.scale.y = lerpf($Body/Visible.scale.y, 1.0 - 0.02*jump_mult, 2.0 * delta)
+	else:
+		$Body/Visible.scale.y = 1.0 - 0.02*jump_mult
 	#fish_tail.position = lerpf()
 	if blink_timer >= BLINK_TIME:
 		eye.play("blink")
@@ -69,7 +80,7 @@ func _process(delta):
 	pedal_2.global_position = $Wheel/Pedal2.global_position
 	
 	# Distance from Joint0 to Target
-	joint_1.global_position = $Body/Joint1.global_position
+	joint_1.global_position = $Body/Visible/Joint1.global_position
 	var length0 = (joint_1.global_position - joint_11.global_position).length()
 	var length1 = (joint_11.global_position - $Joint1/Joint11/Hand.global_position).length()
 	var length2 = (joint_1.global_position - $Wheel/Pedal1.global_position).length()
@@ -91,7 +102,7 @@ func _process(delta):
 		joint_11.rotation = PI + angle1
 		
 		
-	joint_2.global_position = $Body/Joint2.global_position
+	joint_2.global_position = $Body/Visible/Joint2.global_position
 	var length0_ = (joint_2.global_position - joint_21.global_position).length()
 	var length1_ = (joint_21.global_position - $Joint2/Joint21/Hand.global_position).length()
 	var length2_ = (joint_2.global_position - $Wheel/Pedal2.global_position).length()
@@ -111,51 +122,35 @@ func _process(delta):
 
 		joint_2.rotation = atan_+angle0
 		joint_21.rotation = PI + angle1
-	#if (prev_vel - cur_vel).length() > 20:
-	#	eye.play("squint")
-	#prev_vel = cur_vel
-	#cur_vel = body.linear_velocity
+		
 	if state != ACTIVE:
 		autobalance(delta)
 		return
-		
+	
+	# MOVEMENT 
 	var horz1 = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if keys:
 		mouse_vel.x = horz1 * 20
-	#if wheel.is_on_floor:
-	#	body.apply_impulse(Vector2(-horz1 * delta * LEAN_POWER, 0), Vector2(0, -250))
-	#else:
-	#	body.apply_impulse(Vector2(-horz1 * delta * LEAN_POWER / 2, 0), Vector2(0, -250))
-	#var horz2 = Input.get_action_strength("right2") - Input.get_action_strength("left2")
-	#wheel.apply_torque_impulse(horz2 * 50000 * delta)
-	if abs(body.rotation) < PI/3 and wheel.is_on_floor:
-		wheel.apply_torque_impulse(-wheelt_pid.step(wheel.angular_velocity - wheel_vel_to_lean_ratio * fmod(body.rotation, 2 * PI)/(PI/3), delta) * delta)
-		#print(wheel.angular_velocity, ", ", fmod(body.rotation, 2 * PI)/(PI/3))
-	#else:
-		#wheel.apply_torque_impulse(wheel_pid.step(-wheel.rotation, delta) * delta)
+	if abs(body.rotation) < max_lean and wheel.is_on_floor:
+		wheel.apply_torque_impulse(-wheelt_pid.step(wheel.angular_velocity - wheel_vel_to_lean_ratio * fmod(body.rotation, 2 * PI)/max_lean, delta) * delta)
 	if wheel.is_on_floor:
-		#body.apply_force(Vector2(body_pid.step(target_player_rot-body.rotation, delta) * delta, 0), Vector2(0, -250))
-		body.apply_impulse(Vector2(mouse_vel.x * 100/2/35.0 * Global.sense, 0), Vector2(0, -250))
+		body.apply_impulse(Vector2(mouse_vel.x * ground_lean * Global.sense, 0), Vector2(0, -250))
 	else:
-		body.apply_central_impulse(Vector2(mouse_vel.x * 50/30.0 * Global.sense, 0))
-		body.apply_impulse(Vector2(mouse_vel.x * 30/35.0 * Global.sense, 0), Vector2(0, -250))
-	if (Input.is_action_just_released("jump")) and jump_mult > 0 and jump_cooldown <= 0.0 and wheel.is_on_floor:
-			jump_cooldown = 0.2
-			#linear_velocity.y = 0
-			#linear_velocity.y -= INIT_JUMP_SPEED * (jump_mult*3/4 + 0.25)
-			body.apply_central_impulse(Vector2.UP.rotated(fmod(body.rotation, 2 * PI)) * INIT_JUMP_SPEED * (jump_mult*3/4 + 0.25))
+		body.apply_central_impulse(Vector2(mouse_vel.x * air_movement * Global.sense, 0))
+		body.apply_impulse(Vector2(mouse_vel.x * air_lean * Global.sense, 0), Vector2(0, -250))
+	
+	# JUMPING
+	if Input.is_action_just_released("jump"):
+		if jump_mult > 0 and jump_cooldown <= 0.0 and wheel.is_on_floor:
+			jump_cooldown = jump_cooldown_max
+			body.apply_central_impulse(Vector2.UP.rotated(fmod(body.rotation, 2 * PI)) * init_jump_speed * (jump_mult*3/4 + 0.25)) 
+			# extra numbers to start it at .25 and go to 1
+		jump_mult = 0
 	if jump_cooldown > 0.0:
 		jump_cooldown -= delta
-	if wheel.is_on_floor:
-		if Input.is_action_pressed("jump"):
-			if jump_mult >= 1.0:
-				#max_vel = 0  
-				pass
-			else:
-				jump_mult += delta * 1 / JUMP_CHARGE_TIME
-				jump_mult = clamp(jump_mult, 0, 1.0)
-		else:
-			jump_mult = 0
+	if Input.is_action_pressed("jump"):
+		jump_mult += delta * 1 / jump_charge_time
+		jump_mult = clamp(jump_mult, 0, 1.0)
 
 func autobalance(delta):
 	body.apply_force(Vector2(body_pid.step(-fmod(body.rotation, 2 * PI), delta) * delta, 0), Vector2(0, -250))
@@ -218,7 +213,6 @@ func _on_area_2d_body_exited(body):
 	if body is NPC2D:
 		body.notify_near(false)
 		npcs_in_range.erase(body)
-
 
 func _on_eye_animation_finished():
 	if eye.animation == "blink":

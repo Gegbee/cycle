@@ -82,6 +82,7 @@ escape={
 
 [physics]
 
+common/physics_ticks_per_second=90
 2d/default_gravity=1000.0
 
 [rendering]

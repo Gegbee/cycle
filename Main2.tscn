@@ -1,0 +1,188 @@
+[gd_scene load_steps=11 format=3 uid="uid://ci5xvel8cg6q6"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_qnkro"]
+[ext_resource type="Texture2D" uid="uid://dp83b5a2mps6l" path="res://Assets/Levels/Main21.png" id="2_hootd"]
+[ext_resource type="Script" path="res://CustomCamera.gd" id="3_gonsn"]
+[ext_resource type="PackedScene" uid="uid://dvi5rl7uwriv1" path="res://Player/SmallPlayer.tscn" id="6_iet4e"]
+[ext_resource type="FontFile" uid="uid://cpjahop31ai3t" path="res://Assets/Pangolin-Regular.ttf" id="7_244l3"]
+[ext_resource type="Shader" path="res://Assets/WobbleImage.gdshader" id="8_ty1f1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1543q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kqwu"]
+size = Vector2(98, 4173)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t08pd"]
+shader = ExtResource("8_ty1f1")
+shader_parameter/time_factor = 3.0
+shader_parameter/amplitude = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5b7g"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 2
+expand_margin_left = 25.0
+expand_margin_top = 15.0
+expand_margin_right = 25.0
+expand_margin_bottom = 15.0
+anti_aliasing = false
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qnkro")
+
+[node name="Level1" type="Sprite2D" parent="."]
+z_index = -11
+position = Vector2(0, -2700)
+texture = ExtResource("2_hootd")
+
+[node name="CustomCamera" type="Camera2D" parent="."]
+position = Vector2(0, -540)
+script = ExtResource("3_gonsn")
+
+[node name="Col" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Col"]
+position = Vector2(0, -84)
+shape = SubResource("WorldBoundaryShape2D_1543q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Col"]
+position = Vector2(769, -2107.5)
+shape = SubResource("RectangleShape2D_0kqwu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Col"]
+position = Vector2(-768, -2107.5)
+shape = SubResource("RectangleShape2D_0kqwu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Col"]
+
+[node name="CollisionPolygon2D33" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(426, -5241, 431, -5209, 479, -5217, 475, -5247)
+
+[node name="CollisionPolygon2D32" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(218, -5090, 216, -5059, 265, -5057, 266, -5088)
+
+[node name="CollisionPolygon2D31" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(409, -4960, 404, -4930, 451, -4919, 458, -4949)
+
+[node name="CollisionPolygon2D30" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(234, -4795, 235, -4763, 283, -4765, 282, -4797)
+
+[node name="CollisionPolygon2D29" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(22, -4655, 29, -4625, 76, -4635, 70, -4665)
+
+[node name="CollisionPolygon2D28" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-361, -4531, -201, -4561, -195, -4531, -355, -4500)
+
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-239, -3877, -239, -3846, -189, -3845, -189, -3877)
+
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(352, 70)
+polygon = PackedVector2Array(-239, -3877, -239, -3846, -189, -3845, -189, -3877)
+
+[node name="CollisionPolygon2D25" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(284, -159)
+polygon = PackedVector2Array(-239, -3877, -239, -3846, -189, -3845, -189, -3877)
+
+[node name="CollisionPolygon2D26" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(14, -298)
+polygon = PackedVector2Array(-239, -3877, -239, -3846, -77, -3845, -77, -3876)
+
+[node name="CollisionPolygon2D27" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(-507, -343)
+polygon = PackedVector2Array(-214, -4046, -220, -3845, -78, -3845, -78, -3876, -130, -3876, -130, -4046)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-323, -3498, -323, -3467, -262, -3467, -262, -3498)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(537, 1)
+polygon = PackedVector2Array(-323, -3498, -323, -3467, -262, -3467, -262, -3498)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(778, -184)
+polygon = PackedVector2Array(-323, -3498, -323, -3467, -262, -3467, -262, -3498)
+
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(-242, -184)
+polygon = PackedVector2Array(-323, -3498, -323, -3467, -262, -3467, -262, -3498)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-340, -3212, -330, -3183, 5, -3296, 330, -3182, 340, -3212, 5, -3330)
+
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-722, -3057, -608, -3056, -608, -3010, -732, -3010)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(607, -3057, 608, -3010, 728, -3011, 727, -3057)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(138, -2979, 138, -2933, 292, -2932, 292, -2979)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-728, -2688, -515, -2639, -520, -2614, -727, -2662)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-199, -2785, -194, -2760, 11, -2800, 6, -2826)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(5, -2634, 0, -2611, 204, -2565, 209, -2589)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-285, -2492, -291, -2466, -87, -2421, -81, -2446)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-291, -2256, -291, -2207, 293, -2207, 293, -2257)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(585, -2065, 585, -1958, 720, -1958, 720, -2199, 654, -2198, 654, -2081)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-260, -1654, -255, -1634, -4, -1697, -4, -1807, 167, -1865, 326, -1949, 418, -1949, 419, -1971, 319, -1971, 157, -1884, -25, -1822, -25, -1714)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-722, -1516, -476, -1460, -481, -1436, -730, -1491)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-721, -1270, -721, -1227, -347, -1226, -347, -1270)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-140, -976, -140, -913, 194, -913, 194, -977, 72, -977, 72, -1155, -51, -1155, -51, -976)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(370, -629, 370, -577, 431, -577, 431, -83, 969, -68, 964, -1093, 719, -1096, 719, -842, 601, -842, 602, -629)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-49, -558, -49, -506, 194, -506, 194, -558)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Col"]
+polygon = PackedVector2Array(-517, -229, -516, -84, -8, -84, -8, -229, -140, -229, -140, -390, -423, -390, -422, -230)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 45.0
+offset_top = 33.0
+offset_right = 90.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("7_244l3")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Label"]
+z_index = -1
+material = SubResource("ShaderMaterial_t08pd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5b7g")
+
+[node name="Player" parent="." instance=ExtResource("6_iet4e")]
+position = Vector2(104, -84)

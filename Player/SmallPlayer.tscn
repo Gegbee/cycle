@@ -1,38 +1,37 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctmb84aff7y1u"]
+[gd_scene load_steps=21 format=3 uid="uid://dvi5rl7uwriv1"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_ae5wc"]
-[ext_resource type="Texture2D" uid="uid://dk8ojnbycqvh3" path="res://Assets/Player/Wheel.png" id="3_cd37b"]
-[ext_resource type="Script" path="res://Player/Wheel.gd" id="3_yssa1"]
-[ext_resource type="PackedScene" uid="uid://bixi67x2r0wwx" path="res://Dialog/Dialog.tscn" id="4_tw7ot"]
-[ext_resource type="Texture2D" uid="uid://cghcit2xukdde" path="res://Assets/Player/FishBody.png" id="5_gfu72"]
-[ext_resource type="Texture2D" uid="uid://g04fxi3q6njy" path="res://Assets/Player/FishTail.png" id="6_831g7"]
-[ext_resource type="Texture2D" uid="uid://c2hhfh7vugkkf" path="res://Assets/Player/Body.png" id="6_g13yf"]
-[ext_resource type="Texture2D" uid="uid://dgdclf4emtiwr" path="res://Assets/Player/EyeSquint.png" id="7_l60ok"]
-[ext_resource type="Texture2D" uid="uid://cuwalirrgbtkc" path="res://Assets/Player/EyeClosed.png" id="8_dxdp8"]
-[ext_resource type="Texture2D" uid="uid://cdjellkdsj5t4" path="res://Assets/Player/EyeOpen.png" id="9_h06mx"]
-[ext_resource type="Texture2D" uid="uid://b4d3se063axj5" path="res://Assets/Player/Pedal.png" id="11_7rdlq"]
-[ext_resource type="Texture2D" uid="uid://dworfu20iggof" path="res://Assets/Player/UpperLeg.png" id="12_gh3gl"]
-[ext_resource type="Texture2D" uid="uid://dhyjjw5bym1oh" path="res://Assets/Player/LowerLeg.png" id="13_e4vwo"]
-[ext_resource type="Texture2D" uid="uid://dl7wnnlp6u267" path="res://Assets/Player/Foot.png" id="14_eg26y"]
-[ext_resource type="Texture2D" uid="uid://du7kehv6ai8ct" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="15_clc7a"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_ek3pt"]
+[ext_resource type="Script" path="res://Player/Wheel.gd" id="2_4hrjq"]
+[ext_resource type="Texture2D" uid="uid://kkcf5kpmes2m" path="res://Assets/Player/Small/Wheel.png" id="3_7whhg"]
+[ext_resource type="Texture2D" uid="uid://g8ljvkikst7q" path="res://Assets/Player/Small/FishBody.png" id="4_jknbs"]
+[ext_resource type="Texture2D" uid="uid://c2hhfh7vugkkf" path="res://Assets/Player/Body.png" id="4_me6y8"]
+[ext_resource type="Texture2D" uid="uid://g04fxi3q6njy" path="res://Assets/Player/FishTail.png" id="5_lia0g"]
+[ext_resource type="Texture2D" uid="uid://by6b3jx8cywpb" path="res://Assets/Player/Small/EyeClosed.png" id="6_r6fum"]
+[ext_resource type="Texture2D" uid="uid://etkdt73fe1ua" path="res://Assets/Player/Small/EyeOpen.png" id="7_5nk45"]
+[ext_resource type="Texture2D" uid="uid://c8ahcptv18x5l" path="res://Assets/Player/Small/EyeSquint.png" id="8_ony5q"]
+[ext_resource type="PackedScene" uid="uid://bixi67x2r0wwx" path="res://Dialog/Dialog.tscn" id="10_oy7re"]
+[ext_resource type="Texture2D" uid="uid://8nvd1oipuy0f" path="res://Assets/Player/Small/LowerLeg.png" id="11_hymwl"]
+[ext_resource type="Texture2D" uid="uid://siu2ppfqmt1e" path="res://Assets/Player/Small/UpperLeg.png" id="12_ra1ix"]
+[ext_resource type="Texture2D" uid="uid://dv06kyn3qbwmh" path="res://Assets/Player/Small/Pedal.png" id="13_p6rjg"]
+[ext_resource type="Texture2D" uid="uid://bqmhgpw1w7ity" path="res://Assets/Player/Small/Foot.png" id="14_ou0xv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2d77"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0wkj8"]
-radius = 40.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxnre"]
+radius = 22.0227
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hee8h"]
-size = Vector2(16, 96)
+size = Vector2(4, 48)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_olxwo"]
-radius = 32.0
-height = 128.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xas8n"]
+radius = 15.0
+height = 72.93
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hfbg2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_dxdp8")
+"texture": ExtResource("6_r6fum")
 }],
 "loop": false,
 "name": &"blink",
@@ -40,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_h06mx")
+"texture": ExtResource("7_5nk45")
 }],
 "loop": false,
 "name": &"open",
@@ -48,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_l60ok")
+"texture": ExtResource("8_ony5q")
 }],
 "loop": true,
 "name": &"squint",
@@ -56,34 +55,40 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngbvd"]
-size = Vector2(592, 224)
+size = Vector2(437, 127)
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_ae5wc")
+script = ExtResource("1_ek3pt")
+init_jump_speed = 12000.0
+wheel_vel_to_lean_ratio = 40.0
+air_movement = 1.2
+ground_lean = 0.9
+air_lean = 0.4
 
 [node name="Wheel" type="RigidBody2D" parent="." groups=["player"]]
 position = Vector2(0, -40)
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_d2d77")
+gravity_scale = 0.7
 continuous_cd = 2
 max_contacts_reported = 4
 contact_monitor = true
 can_sleep = false
-script = ExtResource("3_yssa1")
+script = ExtResource("2_4hrjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel"]
-shape = SubResource("CircleShape2D_0wkj8")
+shape = SubResource("CircleShape2D_vxnre")
 
 [node name="Sprite2D" type="Sprite2D" parent="Wheel"]
-texture = ExtResource("3_cd37b")
+texture = ExtResource("3_7whhg")
 
 [node name="Pedal1" type="Marker2D" parent="Wheel"]
 z_index = -1
-position = Vector2(24, 0)
+position = Vector2(14, 0)
 
 [node name="Pedal2" type="Marker2D" parent="Wheel"]
 z_index = -1
-position = Vector2(-23, 0)
+position = Vector2(-14, 0)
 
 [node name="Body" type="RigidBody2D" parent="." groups=["player"]]
 center_of_mass_mode = 1
@@ -97,38 +102,39 @@ angular_damp = 4.0
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
 visible = false
 position = Vector2(-8, -160)
-texture = ExtResource("6_g13yf")
+texture = ExtResource("4_jknbs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-position = Vector2(0, -86.465)
+position = Vector2(0, -71)
 shape = SubResource("RectangleShape2D_hee8h")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Body"]
-position = Vector2(0, -198.465)
-shape = SubResource("CapsuleShape2D_olxwo")
+position = Vector2(0, -107)
+shape = SubResource("CapsuleShape2D_xas8n")
 
 [node name="Visible" type="Node2D" parent="Body"]
 
 [node name="FishTail" type="Sprite2D" parent="Body/Visible"]
-position = Vector2(39, -205)
-texture = ExtResource("6_831g7")
+position = Vector2(10, -120)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_lia0g")
 
 [node name="FishBody" type="Sprite2D" parent="Body/Visible"]
-position = Vector2(-3, -160)
-texture = ExtResource("5_gfu72")
+position = Vector2(-1, -93)
+texture = ExtResource("4_jknbs")
 
 [node name="Eye" type="AnimatedSprite2D" parent="Body/Visible"]
-position = Vector2(13, -235)
+position = Vector2(8, -126)
 sprite_frames = SubResource("SpriteFrames_hfbg2")
-animation = &"blink"
+animation = &"squint"
 
 [node name="Joint1" type="Marker2D" parent="Body/Visible"]
 z_index = 1
-position = Vector2(16, -160)
+position = Vector2(11, -94)
 
 [node name="Joint2" type="Marker2D" parent="Body/Visible"]
 z_index = 1
-position = Vector2(-15, -161)
+position = Vector2(-5, -94)
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 position = Vector2(0, -40)
@@ -142,87 +148,78 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoRotation/Area2D"]
-position = Vector2(0, -128)
+position = Vector2(0, -87)
 shape = SubResource("RectangleShape2D_ngbvd")
 
-[node name="DialogBubble" parent="NoRotation" instance=ExtResource("4_tw7ot")]
+[node name="DialogBubble" parent="NoRotation" instance=ExtResource("10_oy7re")]
 position = Vector2(0, -304)
 
 [node name="Body2" type="Sprite2D" parent="NoRotation"]
 visible = false
 position = Vector2(-8, -160)
-texture = ExtResource("6_g13yf")
+texture = ExtResource("4_me6y8")
 
 [node name="Center" type="Marker2D" parent="NoRotation"]
-position = Vector2(0, -144)
-
-[node name="DirectionalLight2D" type="PointLight2D" parent="NoRotation"]
-position = Vector2(1, -170)
-color = Color(0.941176, 0.65098, 0.27451, 1)
-energy = 0.42
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0.917647)
-texture = ExtResource("15_clc7a")
-texture_scale = 8.61
+position = Vector2(0, -91)
 
 [node name="Joint1" type="Marker2D" parent="."]
 top_level = true
 z_index = 1
-position = Vector2(16, -160)
+position = Vector2(11, -94)
 
 [node name="Joint11" type="Marker2D" parent="Joint1"]
-position = Vector2(3, 72)
+position = Vector2(0, 38)
 
 [node name="LowerLeg1" type="Sprite2D" parent="Joint1/Joint11"]
-position = Vector2(0, 26)
-texture = ExtResource("13_e4vwo")
+position = Vector2(0, 15)
+texture = ExtResource("11_hymwl")
 
 [node name="Hand" type="Marker2D" parent="Joint1/Joint11"]
-position = Vector2(1, 66)
+position = Vector2(0, 31)
 
 [node name="UpperLeg1" type="Sprite2D" parent="Joint1"]
-position = Vector2(-2, 31)
-texture = ExtResource("12_gh3gl")
+position = Vector2(-2, 17)
+texture = ExtResource("12_ra1ix")
 
 [node name="Joint2" type="Marker2D" parent="."]
 top_level = true
 z_index = -1
-position = Vector2(-15, -161)
+position = Vector2(-5, -94)
 
 [node name="Joint21" type="Marker2D" parent="Joint2"]
-position = Vector2(1, 72)
+position = Vector2(0, 38)
 
 [node name="LowerLeg1" type="Sprite2D" parent="Joint2/Joint21"]
-position = Vector2(0, 26)
-texture = ExtResource("13_e4vwo")
+position = Vector2(0, 15)
+texture = ExtResource("11_hymwl")
 
 [node name="Hand" type="Marker2D" parent="Joint2/Joint21"]
-position = Vector2(1, 67)
+position = Vector2(0, 31)
 
 [node name="UpperLeg1" type="Sprite2D" parent="Joint2"]
-position = Vector2(-1, 31)
-texture = ExtResource("12_gh3gl")
+position = Vector2(-2, 17)
+texture = ExtResource("12_ra1ix")
 
 [node name="Pedal1" type="Sprite2D" parent="."]
 top_level = true
-position = Vector2(25, -40)
-texture = ExtResource("11_7rdlq")
+position = Vector2(14, -40)
+texture = ExtResource("13_p6rjg")
 offset = Vector2(-2.355, 2.05)
 
 [node name="Foot" type="Sprite2D" parent="Pedal1"]
-position = Vector2(-7, -5)
-texture = ExtResource("14_eg26y")
+position = Vector2(-6, -2)
+texture = ExtResource("14_ou0xv")
 
 [node name="Pedal2" type="Sprite2D" parent="."]
 top_level = true
 z_index = -1
-position = Vector2(-23, -40)
-texture = ExtResource("11_7rdlq")
+position = Vector2(-14, -40)
+texture = ExtResource("13_p6rjg")
 offset = Vector2(-2.355, 2.05)
 
-[node name="Foot2" type="Sprite2D" parent="Pedal2"]
-position = Vector2(-4, -4)
-texture = ExtResource("14_eg26y")
+[node name="Foot" type="Sprite2D" parent="Pedal2"]
+position = Vector2(-6, -2)
+texture = ExtResource("14_ou0xv")
 
 [connection signal="body_entered" from="Wheel" to="Wheel" method="_on_body_entered"]
 [connection signal="animation_finished" from="Body/Visible/Eye" to="." method="_on_eye_animation_finished"]
