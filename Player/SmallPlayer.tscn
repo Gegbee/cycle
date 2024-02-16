@@ -1,11 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://dvi5rl7uwriv1"]
+[gd_scene load_steps=22 format=3 uid="uid://dvi5rl7uwriv1"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_ek3pt"]
 [ext_resource type="Script" path="res://Player/Wheel.gd" id="2_4hrjq"]
 [ext_resource type="Texture2D" uid="uid://kkcf5kpmes2m" path="res://Assets/Player/Small/Wheel.png" id="3_7whhg"]
 [ext_resource type="Texture2D" uid="uid://g8ljvkikst7q" path="res://Assets/Player/Small/FishBody.png" id="4_jknbs"]
 [ext_resource type="Texture2D" uid="uid://c2hhfh7vugkkf" path="res://Assets/Player/Body.png" id="4_me6y8"]
-[ext_resource type="Texture2D" uid="uid://g04fxi3q6njy" path="res://Assets/Player/FishTail.png" id="5_lia0g"]
+[ext_resource type="Texture2D" uid="uid://dnk1ymv8mfga1" path="res://Assets/Player/Small/Rope.png" id="5_2dvct"]
+[ext_resource type="Texture2D" uid="uid://dmvo3fofyg8um" path="res://Assets/Player/Small/FishTail.png" id="6_ltf8b"]
 [ext_resource type="Texture2D" uid="uid://by6b3jx8cywpb" path="res://Assets/Player/Small/EyeClosed.png" id="6_r6fum"]
 [ext_resource type="Texture2D" uid="uid://etkdt73fe1ua" path="res://Assets/Player/Small/EyeOpen.png" id="7_5nk45"]
 [ext_resource type="Texture2D" uid="uid://c8ahcptv18x5l" path="res://Assets/Player/Small/EyeSquint.png" id="8_ony5q"]
@@ -114,10 +115,16 @@ shape = SubResource("CapsuleShape2D_xas8n")
 
 [node name="Visible" type="Node2D" parent="Body"]
 
+[node name="Rope" type="Sprite2D" parent="Body/Visible"]
+visible = false
+z_index = 2
+position = Vector2(3, -94)
+scale = Vector2(0.954545, 1)
+texture = ExtResource("5_2dvct")
+
 [node name="FishTail" type="Sprite2D" parent="Body/Visible"]
-position = Vector2(10, -120)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_lia0g")
+position = Vector2(23, -109)
+texture = ExtResource("6_ltf8b")
 
 [node name="FishBody" type="Sprite2D" parent="Body/Visible"]
 position = Vector2(-1, -93)
@@ -160,7 +167,7 @@ position = Vector2(-8, -160)
 texture = ExtResource("4_me6y8")
 
 [node name="Center" type="Marker2D" parent="NoRotation"]
-position = Vector2(0, -91)
+position = Vector2(0, -57)
 
 [node name="Joint1" type="Marker2D" parent="."]
 top_level = true

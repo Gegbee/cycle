@@ -65,10 +65,10 @@ func _process(delta):
 	# COSMETIC
 	$NoRotation.global_position = $Wheel.global_position
 	$Body/Visible.position.y = jump_mult * 4
-	if 1.0 - 0.02*jump_mult > $Body/Visible.scale.y:
-		$Body/Visible.scale.y = lerpf($Body/Visible.scale.y, 1.0 - 0.02*jump_mult, 2.0 * delta)
+	if 1.0 - 0.05*jump_mult > $Body/Visible.scale.y:
+		$Body/Visible.scale.y = lerpf($Body/Visible.scale.y, 1.0 - 0.05*jump_mult, 2.0 * delta)
 	else:
-		$Body/Visible.scale.y = 1.0 - 0.02*jump_mult
+		$Body/Visible.scale.y = 1.0 - 0.05*jump_mult
 	#fish_tail.position = lerpf()
 	if blink_timer >= BLINK_TIME:
 		eye.play("blink")

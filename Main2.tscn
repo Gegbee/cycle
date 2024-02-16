@@ -10,7 +10,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1543q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kqwu"]
-size = Vector2(98, 4173)
+size = Vector2(100, 7908)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t08pd"]
 shader = ExtResource("8_ty1f1")
@@ -53,7 +53,7 @@ position = Vector2(769, -2107.5)
 shape = SubResource("RectangleShape2D_0kqwu")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Col"]
-position = Vector2(-768, -2107.5)
+position = Vector2(-769, -3975)
 shape = SubResource("RectangleShape2D_0kqwu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Col"]
@@ -77,19 +77,20 @@ polygon = PackedVector2Array(22, -4655, 29, -4625, 76, -4635, 70, -4665)
 polygon = PackedVector2Array(-361, -4531, -201, -4561, -195, -4531, -355, -4500)
 
 [node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(-156, 55)
 polygon = PackedVector2Array(-239, -3877, -239, -3846, -189, -3845, -189, -3877)
 
 [node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="Col"]
-position = Vector2(352, 70)
-polygon = PackedVector2Array(-239, -3877, -239, -3846, -189, -3845, -189, -3877)
-
-[node name="CollisionPolygon2D25" type="CollisionPolygon2D" parent="Col"]
-position = Vector2(284, -159)
+position = Vector2(328, -105)
 polygon = PackedVector2Array(-239, -3877, -239, -3846, -189, -3845, -189, -3877)
 
 [node name="CollisionPolygon2D26" type="CollisionPolygon2D" parent="Col"]
 position = Vector2(14, -298)
-polygon = PackedVector2Array(-239, -3877, -239, -3846, -77, -3845, -77, -3876)
+polygon = PackedVector2Array(-278, -3876, -277, -3846, -77, -3845, -77, -3876)
+
+[node name="CollisionPolygon2D34" type="CollisionPolygon2D" parent="Col"]
+position = Vector2(15, -36)
+polygon = PackedVector2Array(-278, -3876, -277, -3846, -77, -3845, -77, -3876)
 
 [node name="CollisionPolygon2D27" type="CollisionPolygon2D" parent="Col"]
 position = Vector2(-507, -343)
@@ -103,11 +104,11 @@ position = Vector2(537, 1)
 polygon = PackedVector2Array(-323, -3498, -323, -3467, -262, -3467, -262, -3498)
 
 [node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Col"]
-position = Vector2(778, -184)
+position = Vector2(931, -185)
 polygon = PackedVector2Array(-323, -3498, -323, -3467, -262, -3467, -262, -3498)
 
 [node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="Col"]
-position = Vector2(-242, -184)
+position = Vector2(-238, -144)
 polygon = PackedVector2Array(-323, -3498, -323, -3467, -262, -3467, -262, -3498)
 
 [node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Col"]
@@ -185,4 +186,5 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e5b7g")
 
 [node name="Player" parent="." instance=ExtResource("6_iet4e")]
-position = Vector2(104, -84)
+position = Vector2(218, -88)
+ground_lean = 0.8
