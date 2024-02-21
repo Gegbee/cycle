@@ -124,13 +124,14 @@ func _process(delta):
 		joint_21.rotation = PI + angle1
 		
 	if state != ACTIVE:
-		autobalance(delta)
+		pass
+		#autobalance(delta)
 		return
 	
 	# MOVEMENT 
 	var horz1 = Input.get_action_strength("right") - Input.get_action_strength("left")
 	if keys:
-		mouse_vel.x = horz1 * 20
+		mouse_vel.x = horz1 * 12
 	if abs(body.rotation) < max_lean and wheel.is_on_floor:
 		wheel.apply_torque_impulse(-wheelt_pid.step(wheel.angular_velocity - wheel_vel_to_lean_ratio * fmod(body.rotation, 2 * PI)/max_lean, delta) * delta)
 	if wheel.is_on_floor:
@@ -158,11 +159,15 @@ func autobalance(delta):
 	
 func set_state(_state : int):
 	if _state == ACTIVE:
+		wheel.freeze = false
+		body.freeze = false
 		state = _state
 		# turn off autobalancing, should be stable anyways so won't move until player touches? 
 		# Would not work on slopes, would just have to sleep player maybe or nothing at all
 		pass
 	elif _state == DISABLED:
+		wheel.freeze = true
+		body.freeze = true
 		state = _state
 		# autobalance if not already on the ground
 		init_wheel_rot = wheel.rotation

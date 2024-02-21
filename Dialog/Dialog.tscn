@@ -3,6 +3,7 @@
 [ext_resource type="Shader" path="res://Assets/WobbleImage.gdshader" id="2_cc52c"]
 [ext_resource type="Script" path="res://Assets/BBCodePop.gd" id="3_7i6ov"]
 [ext_resource type="Texture2D" uid="uid://c8fex2ndsehip" path="res://Assets/Icons/Choice.png" id="3_24gsf"]
+[ext_resource type="FontFile" uid="uid://b1ewf85gd5sbd" path="res://Assets/Inter-VariableFont_slnt,wght.ttf" id="3_gk2ae"]
 [ext_resource type="FontFile" uid="uid://cpjahop31ai3t" path="res://Assets/Pangolin-Regular.ttf" id="3_u1u5e"]
 [ext_resource type="Texture2D" uid="uid://b07nt1jp74np3" path="res://Assets/Icons/ChoiceNone.png" id="4_ps3sm"]
 [ext_resource type="Texture2D" uid="uid://bhuo4ea4htkrk" path="res://Assets/Icons/DownArrow2.png" id="6_26jt2"]
@@ -15,24 +16,19 @@ shader_parameter/amplitude = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xqd6"]
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 corner_detail = 2
-expand_margin_left = 35.0
+expand_margin_left = 25.0
 expand_margin_top = 25.0
-expand_margin_right = 35.0
+expand_margin_right = 25.0
 expand_margin_bottom = 25.0
 anti_aliasing = false
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_unv23"]
 script = ExtResource("3_7i6ov")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fp4fx"]
-shader = ExtResource("2_cc52c")
-shader_parameter/time_factor = 8.0
-shader_parameter/amplitude = Vector2(2, 2)
 
 [sub_resource type="Animation" id="Animation_xygio"]
 resource_name = "PopUpArrows"
@@ -142,18 +138,18 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -4.0
-offset_top = -52.0
-offset_right = 56.0
-offset_bottom = -12.0
+offset_top = -51.0
+offset_right = 40.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_fonts/normal_font = ExtResource("3_u1u5e")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
+theme_override_fonts/normal_font = ExtResource("3_gk2ae")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/mono_font_size = 18
 bbcode_enabled = true
 text = "[pop]bob![/pop]"
 fit_content = true
@@ -164,7 +160,6 @@ metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="RichTextLabel"]
 z_index = -1
-material = SubResource("ShaderMaterial_d4upn")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,9 +205,8 @@ stretch_mode = 5
 [node name="DownArrow" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-material = SubResource("ShaderMaterial_fp4fx")
-position = Vector2(-1, 49)
-scale = Vector2(0.8, 0.791667)
+position = Vector2(0, 40)
+scale = Vector2(0.575, 0.569)
 texture = ExtResource("6_26jt2")
 
 [node name="ChoiceLeftArrow" type="Sprite2D" parent="."]

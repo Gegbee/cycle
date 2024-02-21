@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name NPC2D
 
 @onready var dialog_entity = DialogEntity.new($DialogBubble/RichTextLabel, $DialogBubble/Choices, $DialogBubble)
+@export var static_convo : bool = false
 
 var past_convos : Array = []
 var current_convo_set : int = 0
@@ -21,7 +22,8 @@ func activate_base_convo():
 	var new_pot_convo = base_convos[current_convo_set][0]
 	if is_instance_valid(Global.dialog):
 		past_convos.append(new_pot_convo)
-		base_convos[current_convo_set].erase(new_pot_convo)
+		if !static_convo:
+			base_convos[current_convo_set].erase(new_pot_convo)
 		Global.dialog.start_convo(new_pot_convo)
 		times_talked_to += 1
 		Global.player.disable_notis(true)

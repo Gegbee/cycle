@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cglh2ygqetb07"]
 
 [ext_resource type="Script" path="res://UI/SplashMenu.gd" id="1_gs7is"]
-[ext_resource type="Texture2D" uid="uid://by1w25w8wgvs" path="res://Assets/Icons/LogoSmall.png" id="2_bhaf7"]
-[ext_resource type="FontFile" uid="uid://1s7fj17hte54" path="res://Assets/Schoolbell-Regular.ttf" id="3_5tf2c"]
+[ext_resource type="Texture2D" uid="uid://bsmiuytfj764u" path="res://Assets/Icons/DemoLogo.png" id="2_v57np"]
+[ext_resource type="FontFile" uid="uid://b1ewf85gd5sbd" path="res://Assets/Inter-VariableFont_slnt,wght.ttf" id="3_gsvq6"]
 
 [sub_resource type="Shader" id="Shader_fxucp"]
 code = "shader_type canvas_item;
@@ -48,16 +48,17 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 14
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_pn28a")
 layout_mode = 2
-texture = ExtResource("2_bhaf7")
+texture = ExtResource("2_v57np")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_5tf2c")
+theme_override_fonts/font = ExtResource("3_gsvq6")
 theme_override_font_sizes/font_size = 26
 text = "click to play"
 horizontal_alignment = 1

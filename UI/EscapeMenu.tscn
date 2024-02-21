@@ -1,15 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://yupxk4j4c6ad"]
+[gd_scene load_steps=14 format=3 uid="uid://yupxk4j4c6ad"]
 
 [ext_resource type="Script" path="res://UI/EscapeMenu.gd" id="1_a4l44"]
-[ext_resource type="Shader" path="res://Assets/WobbleImage.gdshader" id="2_jba2c"]
-[ext_resource type="Texture2D" uid="uid://dmb3tfesshcho" path="res://Assets/Icons/LogoSmallColor.png" id="3_7aqkm"]
-[ext_resource type="FontFile" uid="uid://cpjahop31ai3t" path="res://Assets/Pangolin-Regular.ttf" id="4_7ybtd"]
+[ext_resource type="Texture2D" uid="uid://dmvpgbhh0busw" path="res://Assets/Icons/DemoLogo2.png" id="3_sx4rt"]
+[ext_resource type="FontFile" uid="uid://b1ewf85gd5sbd" path="res://Assets/Inter-VariableFont_slnt,wght.ttf" id="4_d1bd8"]
 [ext_resource type="Script" path="res://UI/EscapeMenuButton.gd" id="4_paxft"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3e8q"]
-shader = ExtResource("2_jba2c")
-shader_parameter/time_factor = 6.0
-shader_parameter/amplitude = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yckdt"]
 bg_color = Color(0, 0, 0, 1)
@@ -23,23 +17,6 @@ expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 60.0
 anti_aliasing = false
-
-[sub_resource type="Shader" id="Shader_fxucp"]
-code = "shader_type canvas_item;
-
-uniform float time_factor = 0.2;
-uniform vec2 amplitude = vec2(20.0,5.0);
-
-void vertex() {
-	// cos giving float between -1, 1
-	VERTEX.x += step(cos(TIME * time_factor + VERTEX.x + VERTEX.y) + 1.0, 1.0) * amplitude.x;
-	VERTEX.y += step(cos(TIME * time_factor + VERTEX.x + VERTEX.y) + 1.0, 1.0) * amplitude.y;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jocjj"]
-shader = SubResource("Shader_fxucp")
-shader_parameter/time_factor = 7.76
-shader_parameter/amplitude = Vector2(2, 2)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3376u"]
 
@@ -73,7 +50,6 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer"]
 z_index = -1
-material = SubResource("ShaderMaterial_w3e8q")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yckdt")
 
@@ -82,15 +58,14 @@ layout_mode = 2
 theme_override_constants/separation = 50
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer"]
-material = SubResource("ShaderMaterial_jocjj")
 layout_mode = 2
-texture = ExtResource("3_7aqkm")
+texture = ExtResource("3_sx4rt")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
-theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_fonts/font = ExtResource("4_d1bd8")
 theme_override_font_sizes/font_size = 30
 text = "Left CLICK -> jump
 Move MOUSE -> lean"
@@ -109,7 +84,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 0.313726)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.313726)
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.117647)
-theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_fonts/font = ExtResource("4_d1bd8")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3376u")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3a4f0")
@@ -128,7 +103,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 0.313726)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.313726)
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.117647)
-theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_fonts/font = ExtResource("4_d1bd8")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_37pv7")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_oiq3n")
@@ -145,7 +120,7 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
-theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_fonts/font = ExtResource("4_d1bd8")
 theme_override_font_sizes/font_size = 30
 text = "Sensitivity"
 horizontal_alignment = 1
@@ -161,7 +136,7 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
-theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_fonts/font = ExtResource("4_d1bd8")
 theme_override_font_sizes/font_size = 30
 text = "Volume"
 horizontal_alignment = 1
@@ -178,7 +153,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/HBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
-theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_fonts/font = ExtResource("4_d1bd8")
 theme_override_font_sizes/font_size = 30
 text = "FPS Cap:"
 horizontal_alignment = 1
@@ -204,7 +179,7 @@ text = "Accessibility Mode"
 [node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
-theme_override_fonts/font = ExtResource("4_7ybtd")
+theme_override_fonts/font = ExtResource("4_d1bd8")
 theme_override_font_sizes/font_size = 30
 text = "ELAPSED TIME: "
 horizontal_alignment = 1

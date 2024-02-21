@@ -159,7 +159,7 @@ position = Vector2(0, -87)
 shape = SubResource("RectangleShape2D_ngbvd")
 
 [node name="DialogBubble" parent="NoRotation" instance=ExtResource("10_oy7re")]
-position = Vector2(0, -304)
+position = Vector2(0, -168)
 
 [node name="Body2" type="Sprite2D" parent="NoRotation"]
 visible = false

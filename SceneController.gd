@@ -2,8 +2,8 @@ extends Node
 
 var scenes_in_game : Dictionary = {
 	"Splash" : preload("res://UI/SplashMenu.tscn"),
-	"Intro" : preload("res://Intro.tscn"),
-	"Main" : preload("res://Main.tscn"),
+	"Intro" : preload("res://Intro2.tscn"),
+	"Main" : preload("res://Main2.tscn"),
 }
 var cur_scene_name = 3
 var cur_scene = null
