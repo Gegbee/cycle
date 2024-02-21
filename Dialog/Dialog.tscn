@@ -203,6 +203,7 @@ texture = ExtResource("4_ps3sm")
 stretch_mode = 5
 
 [node name="DownArrow" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, 40)

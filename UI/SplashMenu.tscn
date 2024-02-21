@@ -1,25 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cglh2ygqetb07"]
+[gd_scene load_steps=5 format=3 uid="uid://cglh2ygqetb07"]
 
 [ext_resource type="Script" path="res://UI/SplashMenu.gd" id="1_gs7is"]
 [ext_resource type="Texture2D" uid="uid://bsmiuytfj764u" path="res://Assets/Icons/DemoLogo.png" id="2_v57np"]
 [ext_resource type="FontFile" uid="uid://b1ewf85gd5sbd" path="res://Assets/Inter-VariableFont_slnt,wght.ttf" id="3_gsvq6"]
 
-[sub_resource type="Shader" id="Shader_fxucp"]
-code = "shader_type canvas_item;
-
-uniform float time_factor = 0.2;
-uniform vec2 amplitude = vec2(20.0,5.0);
-
-void vertex() {
-	// cos giving float between -1, 1
-	VERTEX.x += step(cos(TIME * time_factor + VERTEX.x + VERTEX.y) + 1.0, 1.0) * amplitude.x;
-	VERTEX.y += step(cos(TIME * time_factor + VERTEX.x + VERTEX.y) + 1.0, 1.0) * amplitude.y;
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pn28a"]
-shader = SubResource("Shader_fxucp")
-shader_parameter/time_factor = 7.76
-shader_parameter/amplitude = Vector2(2, 2)
 
 [node name="SplashMenu" type="Control"]
 layout_mode = 3

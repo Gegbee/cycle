@@ -153,33 +153,52 @@ script = ExtResource("10_eou8h")
 sprite_path = NodePath("F8")
 
 [node name="F8" type="Sprite2D" parent="FallingPlatforms/FallingPlatform8"]
-position = Vector2(-484, -7792)
+position = Vector2(-502.25, -7775)
+scale = Vector2(1.38889, 1)
 texture = ExtResource("12_ofk0k")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingPlatforms/FallingPlatform8"]
-polygon = PackedVector2Array(-507, -7808, -507, -7776, -461, -7776, -460, -7808)
+position = Vector2(-27, 17)
+polygon = PackedVector2Array(-507, -7808, -507, -7776, -444, -7776, -444, -7808)
 
 [node name="FallingPlatform9" type="StaticBody2D" parent="FallingPlatforms"]
 script = ExtResource("10_eou8h")
 sprite_path = NodePath("F9")
 
 [node name="F9" type="Sprite2D" parent="FallingPlatforms/FallingPlatform9"]
-position = Vector2(-317, -7958)
+position = Vector2(-375.25, -7934)
+scale = Vector2(1.34444, 1)
 texture = ExtResource("13_ytwcg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingPlatforms/FallingPlatform9"]
-polygon = PackedVector2Array(-339, -7974, -339, -7943, -294, -7943, -294, -7974)
+position = Vector2(-51, 25)
+polygon = PackedVector2Array(-355, -7974, -354, -7943, -294, -7943, -294, -7974)
 
 [node name="FallingPlatform10" type="StaticBody2D" parent="FallingPlatforms"]
 script = ExtResource("10_eou8h")
 sprite_path = NodePath("F10")
 
 [node name="F10" type="Sprite2D" parent="FallingPlatforms/FallingPlatform10"]
-position = Vector2(-149, -8124)
+position = Vector2(-245.25, -8100)
+scale = Vector2(1.34444, 1)
 texture = ExtResource("14_3ixbg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingPlatforms/FallingPlatform10"]
-polygon = PackedVector2Array(-172, -8140, -172, -8109, -127, -8109, -127, -8140)
+position = Vector2(-88, 25)
+polygon = PackedVector2Array(-187, -8140, -187, -8109, -127, -8109, -127, -8140)
+
+[node name="FallingPlatform18" type="StaticBody2D" parent="FallingPlatforms"]
+script = ExtResource("10_eou8h")
+sprite_path = NodePath("F18")
+
+[node name="F18" type="Sprite2D" parent="FallingPlatforms/FallingPlatform18"]
+position = Vector2(-115.25, -8266.7)
+scale = Vector2(1.34444, 1)
+texture = ExtResource("14_3ixbg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingPlatforms/FallingPlatform18"]
+position = Vector2(42, -141.7)
+polygon = PackedVector2Array(-187, -8140, -187, -8109, -127, -8109, -127, -8140)
 
 [node name="FallingPlatform11" type="StaticBody2D" parent="FallingPlatforms"]
 script = ExtResource("10_eou8h")
@@ -197,11 +216,13 @@ script = ExtResource("10_eou8h")
 sprite_path = NodePath("F12")
 
 [node name="F12" type="Sprite2D" parent="FallingPlatforms/FallingPlatform12"]
-position = Vector2(191, -8293)
+position = Vector2(149.5, -8165)
+scale = Vector2(2.58333, 1)
 texture = ExtResource("16_ygwrd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingPlatforms/FallingPlatform12"]
-polygon = PackedVector2Array(173, -8309, 173, -8277, 209, -8277, 209, -8308)
+position = Vector2(-70, 127)
+polygon = PackedVector2Array(173, -8307, 173, -8277, 266, -8277, 266, -8308)
 
 [node name="FallingPlatform13" type="StaticBody2D" parent="FallingPlatforms"]
 script = ExtResource("10_eou8h")
@@ -288,7 +309,7 @@ polygon = PackedVector2Array(-206, -9650, -206, -9630, -2, -9536, 207, -9631, 20
 polygon = PackedVector2Array(-205, -9096, -205, -9064, 205, -9064, 205, -9095, -2, -9244)
 
 [node name="CollisionPolygon2D46" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(-727, -8836, -610, -8792, -610, -8759, -723, -8801)
+polygon = PackedVector2Array(-723, -8938, -671, -8938, -671, -8892, -575, -8822, -538, -8816, -543, -8790, -590, -8798, -720, -8888)
 
 [node name="CollisionPolygon2D45" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(-203, -8751, 209, -8751, 210, -8725, 524, -8562, 511, -8533, 157, -8719, 180, -8383, 150, -8381, 126, -8719, -204, -8720)
@@ -448,7 +469,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e5b7g")
 
 [node name="Player" parent="." instance=ExtResource("6_iet4e")]
-position = Vector2(-232, -3906)
+position = Vector2(77, -8740)
 
 [node name="IntroDoorBack" type="Sprite2D" parent="."]
 z_index = -3

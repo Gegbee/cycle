@@ -18,6 +18,7 @@ position = Vector2(0, -136)
 
 [node name="Notifier" parent="." index="2"]
 position = Vector2(0, -136)
+scale = Vector2(0.5, 0.5)
 
 [node name="NoteTemplate" type="Sprite2D" parent="." index="3"]
 position = Vector2(0, -64)
