@@ -55,7 +55,7 @@ anti_aliasing = false
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c8n7d"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lmwwg"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mj48j"]
 width = 1920
 height = 1080
 seamless = true
@@ -66,7 +66,7 @@ shader = ExtResource("29_j2oap")
 shader_parameter/speed = 5.0
 shader_parameter/scale = 0.008
 shader_parameter/BIAS = 1.0
-shader_parameter/noise = SubResource("NoiseTexture2D_lmwwg")
+shader_parameter/noise = SubResource("NoiseTexture2D_mj48j")
 
 [node name="Main2" type="Node2D"]
 script = ExtResource("1_qnkro")
@@ -474,6 +474,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Label"]
+visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_t08pd")
 layout_mode = 1
@@ -516,3 +517,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

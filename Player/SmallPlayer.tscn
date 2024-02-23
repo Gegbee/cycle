@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvi5rl7uwriv1"]
+[gd_scene load_steps=23 format=3 uid="uid://dvi5rl7uwriv1"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_ek3pt"]
 [ext_resource type="Script" path="res://Player/Wheel.gd" id="2_4hrjq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dmvo3fofyg8um" path="res://Assets/Player/Small/FishTail.png" id="6_ltf8b"]
 [ext_resource type="Texture2D" uid="uid://by6b3jx8cywpb" path="res://Assets/Player/Small/EyeClosed.png" id="6_r6fum"]
 [ext_resource type="Texture2D" uid="uid://etkdt73fe1ua" path="res://Assets/Player/Small/EyeOpen.png" id="7_5nk45"]
+[ext_resource type="Texture2D" uid="uid://wijvyrnt8y2u" path="res://Assets/Player/FishBodyS.png" id="7_on3v8"]
 [ext_resource type="Texture2D" uid="uid://c8ahcptv18x5l" path="res://Assets/Player/Small/EyeSquint.png" id="8_ony5q"]
 [ext_resource type="PackedScene" uid="uid://bixi67x2r0wwx" path="res://Dialog/Dialog.tscn" id="10_oy7re"]
 [ext_resource type="Texture2D" uid="uid://8nvd1oipuy0f" path="res://Assets/Player/Small/LowerLeg.png" id="11_hymwl"]
@@ -128,7 +129,8 @@ texture = ExtResource("6_ltf8b")
 
 [node name="FishBody" type="Sprite2D" parent="Body/Visible"]
 position = Vector2(-1, -93)
-texture = ExtResource("4_jknbs")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_on3v8")
 
 [node name="Eye" type="AnimatedSprite2D" parent="Body/Visible"]
 position = Vector2(8, -126)
