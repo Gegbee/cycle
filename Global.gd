@@ -1,6 +1,6 @@
 extends Node
 
-var export := false
+var export := true
 var scene_controller = null
 var elapsed_time : float = 0.0
 

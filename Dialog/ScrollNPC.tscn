@@ -1,10 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://6o6e7k1tf4nx"]
+[gd_scene load_steps=6 format=3 uid="uid://6o6e7k1tf4nx"]
 
 [ext_resource type="PackedScene" uid="uid://ds61jvf2crebk" path="res://Dialog/NPC.tscn" id="1_nyilx"]
 [ext_resource type="Texture2D" uid="uid://cuj7s3h8yg876" path="res://Assets/Levels/NoteTemplate.png" id="2_w1u0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbfe2"]
 size = Vector2(112, 128)
+
+[sub_resource type="Animation" id="Animation_byktt"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoteTemplate:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -64), Vector2(0, -66.885), Vector2(0, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NoteTemplate:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.62, 0.62), Vector2(0.62, 0.665), Vector2(0.62, 0.62), Vector2(0.645, 0.62), Vector2(0.62, 0.62)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_met1h"]
+_data = {
+"Idle": SubResource("Animation_byktt")
+}
 
 [node name="ScrollNPC" instance=ExtResource("1_nyilx")]
 z_index = 5
@@ -14,15 +48,21 @@ position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_nbfe2")
 
 [node name="DialogBubble" parent="." index="1"]
-position = Vector2(0, -136)
+position = Vector2(0, -160)
 
 [node name="Notifier" parent="." index="2"]
-position = Vector2(0, -136)
+position = Vector2(0, -160)
 scale = Vector2(0.5, 0.5)
 
 [node name="NoteTemplate" type="Sprite2D" parent="." index="3"]
-position = Vector2(0, -64)
-scale = Vector2(0.62, 0.62)
+position = Vector2(0, -64.1281)
+scale = Vector2(0.624029, 0.62)
 texture = ExtResource("2_w1u0w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_met1h")
+}
 
 [editable path="Notifier"]

@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 #var focused
-@onready var Button3 = $Control/MarginContainer/VBoxContainer/VBoxContainer/Button3
-@onready var Button4 = $Control/MarginContainer/VBoxContainer/VBoxContainer/Button4
+#@onready var Button3 = $Control/MarginContainer/VBoxContainer/VBoxContainer/Button3
+#@onready var Button4 = $Control/MarginContainer/VBoxContainer/VBoxContainer/Button4
 
 func _ready():
 	visible = false
@@ -26,7 +26,7 @@ func toggle_pause():
 	get_tree().paused = visible
 	if visible:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		$Control/MarginContainer/VBoxContainer/VBoxContainer/Button.grab_focus()
+		#$Control/MarginContainer/VBoxContainer/VBoxContainer/Button.grab_focus()
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		

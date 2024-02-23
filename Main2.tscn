@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ci5xvel8cg6q6"]
+[gd_scene load_steps=38 format=3 uid="uid://ci5xvel8cg6q6"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_qnkro"]
 [ext_resource type="Texture2D" uid="uid://bjcsqi3tsj86m" path="res://Assets/Levels/LP2.png" id="2_eyhjt"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dvi5rl7uwriv1" path="res://Player/SmallPlayer.tscn" id="6_iet4e"]
 [ext_resource type="Texture2D" uid="uid://bbp0xga2g2vrl" path="res://Assets/Levels/F2.png" id="6_qvych"]
 [ext_resource type="Texture2D" uid="uid://bd8sjlerbcjna" path="res://Assets/Levels/F3.png" id="7_k2gux"]
-[ext_resource type="Texture2D" uid="uid://d37jpdb6uo84n" path="res://Assets/Levels/Intro/IntroDoorBack.png" id="7_x7n26"]
-[ext_resource type="Texture2D" uid="uid://bprb0s46elpac" path="res://Assets/Levels/Intro/IntroDoorFront.png" id="8_fe433"]
 [ext_resource type="Texture2D" uid="uid://duspxysjfj2ce" path="res://Assets/Levels/F4.png" id="8_p6hrt"]
 [ext_resource type="Shader" path="res://Assets/WobbleImage.gdshader" id="8_ty1f1"]
 [ext_resource type="Texture2D" uid="uid://copjvgf8wvsy6" path="res://Assets/Levels/F5.png" id="9_myuvu"]
@@ -26,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://sr3pp62344jq" path="res://Assets/Levels/F15.png" id="19_g3b1l"]
 [ext_resource type="Texture2D" uid="uid://qf0pghoypwiu" path="res://Assets/Levels/F16.png" id="20_fq5l7"]
 [ext_resource type="Texture2D" uid="uid://delyjq1rsd8ye" path="res://Assets/Levels/F17.png" id="21_6lrxh"]
+[ext_resource type="Texture2D" uid="uid://6c4840s7o07j" path="res://Assets/Levels/BigDoorBack.png" id="26_tvyuu"]
 [ext_resource type="Texture2D" uid="uid://bchd56nt48bug" path="res://Assets/Levels/F1.png" id="27_jqt16"]
+[ext_resource type="Texture2D" uid="uid://h5unlic831w" path="res://Assets/Levels/BigDoorFront.png" id="27_yrpnh"]
 [ext_resource type="PackedScene" uid="uid://6o6e7k1tf4nx" path="res://Dialog/ScrollNPC.tscn" id="28_w56en"]
 [ext_resource type="Shader" path="res://WobbleScreen.gdshader" id="29_j2oap"]
 
@@ -67,6 +67,11 @@ shader_parameter/speed = 5.0
 shader_parameter/scale = 0.008
 shader_parameter/BIAS = 1.0
 shader_parameter/noise = SubResource("NoiseTexture2D_mj48j")
+
+[sub_resource type="Environment" id="Environment_dqad2"]
+background_mode = 3
+glow_intensity = 5.52
+glow_bloom = 0.74
 
 [node name="Main2" type="Node2D"]
 script = ExtResource("1_qnkro")
@@ -453,7 +458,7 @@ polygon = PackedVector2Array(-721, -1270, -721, -1227, -720, -1091, -683, -1139,
 polygon = PackedVector2Array(-139, -932, -139, -868, 214, -870, 214, -933, 122, -933, 122, -976, 72, -976, 72, -1155, -51, -1155, -51, -934)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Col"]
-polygon = PackedVector2Array(370, -629, 370, -577, 431, -577, 446, -425, 432, -259, 697, -259, 697, -84, 969, -68, 719, -842, 601, -842, 602, -629)
+polygon = PackedVector2Array(370, -629, 370, -577, 431, -577, 446, -425, 430, -277, 700, -277, 697, -84, 969, -68, 719, -842, 601, -842, 602, -629)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Col"]
 polygon = PackedVector2Array(-49, -558, -44, -515, 37, -497, 110, -515, 192, -516, 194, -558)
@@ -486,29 +491,32 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e5b7g")
 
 [node name="Player" parent="." instance=ExtResource("6_iet4e")]
-position = Vector2(77, -8740)
+position = Vector2(600, -92)
 
 [node name="IntroDoorBack" type="Sprite2D" parent="."]
 z_index = -3
-position = Vector2(418, -174)
-texture = ExtResource("7_x7n26")
-flip_h = true
+position = Vector2(482.5, -177.5)
+texture = ExtResource("26_tvyuu")
 
 [node name="IntroDoorFront" type="Sprite2D" parent="."]
 z_index = 3
-position = Vector2(606.5, -175.5)
-texture = ExtResource("8_fe433")
-flip_h = true
+position = Vector2(660.5, -167.5)
+texture = ExtResource("27_yrpnh")
 
 [node name="ScrollNPC1" parent="." instance=ExtResource("28_w56en")]
-position = Vector2(-141, -3932)
+position = Vector2(104, -2286)
 static_convo = true
 
 [node name="ScrollNPC2" parent="." instance=ExtResource("28_w56en")]
+position = Vector2(-138, -3944)
+static_convo = true
+
+[node name="ScrollNPC3" parent="." instance=ExtResource("28_w56en")]
 position = Vector2(-104, -8776)
 static_convo = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_uxb4t")
@@ -518,3 +526,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dqad2")

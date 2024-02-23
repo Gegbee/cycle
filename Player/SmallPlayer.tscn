@@ -211,23 +211,25 @@ texture = ExtResource("12_ra1ix")
 
 [node name="Pedal1" type="Sprite2D" parent="."]
 top_level = true
-position = Vector2(14, -40)
+position = Vector2(14, -38)
 texture = ExtResource("13_p6rjg")
 offset = Vector2(-2.355, 2.05)
 
 [node name="Foot" type="Sprite2D" parent="Pedal1"]
-position = Vector2(-6, -2)
+position = Vector2(-6, 0)
+rotation = 0.258132
 texture = ExtResource("14_ou0xv")
 
 [node name="Pedal2" type="Sprite2D" parent="."]
 top_level = true
 z_index = -1
-position = Vector2(-14, -40)
+position = Vector2(-14, -38)
 texture = ExtResource("13_p6rjg")
 offset = Vector2(-2.355, 2.05)
 
 [node name="Foot" type="Sprite2D" parent="Pedal2"]
-position = Vector2(-6, -2)
+position = Vector2(-5, 0)
+rotation = 0.294287
 texture = ExtResource("14_ou0xv")
 
 [connection signal="body_entered" from="Wheel" to="Wheel" method="_on_body_entered"]

@@ -66,9 +66,10 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.313726)
 theme_override_fonts/font = ExtResource("4_d1bd8")
-theme_override_font_sizes/font_size = 30
-text = "Left CLICK -> jump
-Move MOUSE -> lean"
+theme_override_font_sizes/font_size = 25
+text = "Left CLICK (HOLD) -> jump
+Move MOUSE -> lean
+right CLICK -> dialogue"
 horizontal_alignment = 1
 vertical_alignment = 1
 

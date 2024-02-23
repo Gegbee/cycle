@@ -18,27 +18,45 @@
 
 > scroll1 > T
 	| init
-	scroll1 |-| I will be leaving notes along my journey
-	scroll1 |-| So those who come after remember me
-	scroll1 |-| Today I ponder what my purpose is
-	scroll1 |-| I scale this well with all my failed friends around me
-	scroll1 |-| Yet I find that I do it with ease
-	scroll1 |-| Whether this should concern me I’m not sure
-	scroll1 |-| Though it most definitely makes me feel powerful
-	scroll1 |-| Nothing like being exiled into a pit just to enjoy it
-	scroll1 |-| I shall see whoever reads this at the top
+	scroll1 |-| I will leave notes along my journey:
+scroll1 |-| My name is Benson Benedict
+scroll1 |-| I was a shopkeeper in the sewer society... 
+scroll1 |-| well...
+scroll1 |-| Until I was charged for murder.
+scroll1 |-| A charge for a murder I did not commit.
+scroll1 |-| Why King Cod would want me exiled?
+scroll1 |-| I am not sure.
+scroll1 |-| But nevertheless,
+scroll1 |-| He has fooled me!
+scroll1 |-| He has exiled me on a conviction I did not commit.
+scroll1 |-| Though it is easier for me to adapt to the punishment...
+scroll1 |-| ...rather than seek justice.
+scroll1 |-| The climb up seems intense,
+scroll1 |-| But I am surely not the first to attempt it. 
+
 
 > scroll2 > T
 	| init
-	scroll2 |-| These statues must have been made during King Salmon’s rule
-	scroll2 |-| Each head belongs to a great figure
-	scroll2 |-| Both the old and the wise
-	scroll2 |-| I wonder if my head would be here if Salmon still ruled 
-	scroll2 |-| After all...
-	scroll2 |-| I’ve made it so much farther than all the other criminals
-	scroll2 |-| I am probably the greatest to ever climb this well
-	scroll2 |-| I can't even see the end
-	scroll2 |-| If I keep going...
-	scroll2 |-| I will undoubtedly achieve centuries of communal effort...
-	scroll2 |-| ...in just a little stroll.
+	scroll2 |-| Today I ponder what my purpose is
+	scroll2 |-| I scale this well with all my failed friends around me
+	scroll2 |-| Yet I find that I do it with ease
+	scroll2 |-| Whether this should concern me-
+	scroll2 |-| I’m not sure
+	scroll2 |-| Though it most definitely makes me feel powerful
+	scroll2 |-| Nothing like being exiled into a pit just to enjoy it
+	scroll2 |-| I shall see whoever reads this at the top
+
+> scroll3 > T
+	| init
+	scroll3 |-| These statues must have been made during King Salmon’s rule
+	scroll3 |-| Each head belongs to a great figure
+	scroll3 |-| Both the old and the wise
+	scroll3 |-| I wonder if my head would be here if Salmon still ruled 
+	scroll3 |-| After all...
+	scroll3 |-| I’ve made it so much farther than all the other criminals
+	scroll3 |-| I am probably the greatest to ever climb this well
+	scroll3 |-| I can't even see the end
+	scroll3 |-| If I keep going...
+	scroll3 |-| I will undoubtedly achieve centuries of communal effort...
+	scroll3 |-| ...in just a little stroll.
 

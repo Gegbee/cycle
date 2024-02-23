@@ -10,8 +10,10 @@ func _ready():
 	speakers['player'] = $Player.dialog_entity
 	speakers['scroll1'] = $ScrollNPC1.dialog_entity
 	speakers['scroll2'] = $ScrollNPC2.dialog_entity
+	speakers['scroll3'] = $ScrollNPC2.dialog_entity
 	$ScrollNPC1.base_convos = [['scroll1']]
 	$ScrollNPC2.base_convos = [['scroll2']]
+	$ScrollNPC3.base_convos = [['scroll3']]
 
 func _process(delta):
 	label.text = str(int(-$Player.get_node("NoRotation/Center").global_position.y / 100)) + "m / " + str(int(1080*10/100)) + "m"
