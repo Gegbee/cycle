@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ci5xvel8cg6q6"]
+[gd_scene load_steps=37 format=3 uid="uid://ci5xvel8cg6q6"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_qnkro"]
 [ext_resource type="Texture2D" uid="uid://bjcsqi3tsj86m" path="res://Assets/Levels/LP2.png" id="2_eyhjt"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://delyjq1rsd8ye" path="res://Assets/Levels/F17.png" id="21_6lrxh"]
 [ext_resource type="Texture2D" uid="uid://bchd56nt48bug" path="res://Assets/Levels/F1.png" id="27_jqt16"]
 [ext_resource type="PackedScene" uid="uid://6o6e7k1tf4nx" path="res://Dialog/ScrollNPC.tscn" id="28_w56en"]
+[ext_resource type="Shader" path="res://WobbleScreen.gdshader" id="29_j2oap"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1543q"]
 
@@ -51,6 +52,21 @@ expand_margin_top = 15.0
 expand_margin_right = 25.0
 expand_margin_bottom = 15.0
 anti_aliasing = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c8n7d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lmwwg"]
+width = 1920
+height = 1080
+seamless = true
+noise = SubResource("FastNoiseLite_c8n7d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxb4t"]
+shader = ExtResource("29_j2oap")
+shader_parameter/speed = 5.0
+shader_parameter/scale = 0.008
+shader_parameter/BIAS = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_lmwwg")
 
 [node name="Main2" type="Node2D"]
 script = ExtResource("1_qnkro")
@@ -490,3 +506,13 @@ static_convo = true
 [node name="ScrollNPC2" parent="." instance=ExtResource("28_w56en")]
 position = Vector2(-104, -8776)
 static_convo = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_uxb4t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
